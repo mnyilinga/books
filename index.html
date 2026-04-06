@@ -1,675 +1,1252 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BookStore | Premium Reading</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
-        :root {
-          --color-black: #000000;
-          --color-white: #ffffff;
-          --color-orange: #FF6A00;
-          --color-orange-hover: #e55e00;
-          --color-gray-50: #fafafa;
-          --color-gray-100: #f5f5f5;
-          --color-gray-300: #e0e0e0;
-          --color-gray-600: #666666;
-          --color-gray-900: #1a1a1a;
-          --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
-          --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
-          --transition: all 0.3s ease;
-          --container-width: 1200px;
-        }
+      :root {
+        --color-black: #000000;
+        --color-white: #ffffff;
+        --color-orange: #ff6a00;
+        --color-orange-hover: #e55e00;
+        --color-gray-50: #fafafa;
+        --color-gray-100: #f5f5f5;
+        --color-gray-300: #e0e0e0;
+        --color-gray-600: #666666;
+        --color-gray-900: #1a1a1a;
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+        --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s ease;
+        --container-width: 1200px;
+      }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-          font-family: 'Inter', sans-serif;
-          color: var(--color-black);
-          background: var(--color-white);
-          line-height: 1.6;
-          font-size: 15px;
-          -webkit-font-smoothing: antialiased;
-        }
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--color-black);
+        background: var(--color-white);
+        line-height: 1.6;
+        font-size: 15px;
+        -webkit-font-smoothing: antialiased;
+      }
 
-        a { text-decoration: none; color: inherit; transition: var(--transition); }
-        ul { list-style: none; }
-        img { max-width: 100%; display: block; }
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: var(--transition);
+      }
+      ul {
+        list-style: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
 
-        .container { max-width: var(--container-width); margin: 0 auto; padding: 0 20px; }
+      .container {
+        max-width: var(--container-width);
+        margin: 0 auto;
+        padding: 0 20px;
+      }
 
-        h1, h2, h3 { font-weight: 600; line-height: 1.2; color: var(--color-black); }
-        h1 { font-size: 3rem; margin-bottom: 1rem; letter-spacing: -0.02em; }
-        h2 { font-size: 2rem; margin-bottom: 1.5rem; }
-        h3 { font-size: 1.25rem; }
-        p { color: var(--color-gray-600); margin-bottom: 1rem; }
+      h1,
+      h2,
+      h3 {
+        font-weight: 600;
+        line-height: 1.2;
+        color: var(--color-black);
+      }
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+      }
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+      }
+      h3 {
+        font-size: 1.25rem;
+      }
+      p {
+        color: var(--color-gray-600);
+        margin-bottom: 1rem;
+      }
 
-        /* ── BUTTONS ── */
-        .btn {
-          display: inline-flex; align-items: center; justify-content: center;
-          padding: 11px 22px; font-size: 0.875rem; font-weight: 500;
-          border-radius: 6px; cursor: pointer; transition: var(--transition);
-          border: 1px solid transparent; white-space: nowrap;
-        }
-        .btn-primary { background: var(--color-orange); color: var(--color-white); }
-        .btn-primary:hover { background: var(--color-orange-hover); }
-        .btn-outline { background: transparent; color: var(--color-black); border-color: var(--color-gray-300); }
-        .btn-outline:hover { border-color: var(--color-black); }
-        .btn-sm { padding: 7px 14px; font-size: 0.78rem; }
+      /* ── BUTTONS ── */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 11px 22px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: var(--transition);
+        border: 1px solid transparent;
+        white-space: nowrap;
+      }
+      .btn-primary {
+        background: var(--color-orange);
+        color: var(--color-white);
+      }
+      .btn-primary:hover {
+        background: var(--color-orange-hover);
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--color-black);
+        border-color: var(--color-gray-300);
+      }
+      .btn-outline:hover {
+        border-color: var(--color-black);
+      }
+      .btn-sm {
+        padding: 7px 14px;
+        font-size: 0.78rem;
+      }
 
-        input {
-          width: 100%; padding: 13px 16px; border: 1px solid var(--color-gray-300);
-          border-radius: 6px; font-family: inherit; font-size: 0.875rem;
-          transition: var(--transition); background: var(--color-gray-50);
-        }
-        input:focus { outline: none; border-color: var(--color-orange); background: var(--color-white); }
+      input {
+        width: 100%;
+        padding: 13px 16px;
+        border: 1px solid var(--color-gray-300);
+        border-radius: 6px;
+        font-family: inherit;
+        font-size: 0.875rem;
+        transition: var(--transition);
+        background: var(--color-gray-50);
+      }
+      input:focus {
+        outline: none;
+        border-color: var(--color-orange);
+        background: var(--color-white);
+      }
 
-        /* ── NAVBAR ── */
-        .navbar {
-          position: sticky; top: 0; background: var(--color-white);
-          border-bottom: 1px solid var(--color-gray-100); z-index: 1000;
-        }
-        .navbar .container { display: flex; justify-content: space-between; align-items: center; height: 72px; }
-        .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; color: var(--color-black); }
-        .nav-links { display: flex; gap: 32px; }
-        .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--color-gray-600); }
-        .nav-links a:hover, .nav-links a.active { color: var(--color-orange); }
-        .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
-        .menu-toggle svg { width: 22px; height: 22px; fill: var(--color-black); display: block; }
+      /* ── NAVBAR ── */
+      .navbar {
+        position: sticky;
+        top: 0;
+        background: var(--color-white);
+        border-bottom: 1px solid var(--color-gray-100);
+        z-index: 1000;
+      }
+      .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 72px;
+      }
+      .logo {
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--color-black);
+      }
+      .nav-links {
+        display: flex;
+        gap: 32px;
+      }
+      .nav-links a {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--color-gray-600);
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--color-orange);
+      }
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+      }
+      .menu-toggle svg {
+        width: 22px;
+        height: 22px;
+        fill: var(--color-black);
+        display: block;
+      }
 
-        /* ── HERO ── */
-        .hero { padding: 100px 0; background: var(--color-gray-50); text-align: center; }
-        .hero p { font-size: 1.1rem; max-width: 580px; margin: 0 auto 32px; }
-        .hero-btns { display: flex; gap: 12px; justify-content: center; }
+      /* ── HERO ── */
+      .hero {
+        padding: 100px 0;
+        background: var(--color-gray-50);
+        text-align: center;
+      }
+      .hero p {
+        font-size: 1.1rem;
+        max-width: 580px;
+        margin: 0 auto 32px;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+      }
 
-        /* ── SECTIONS ── */
-        .section { padding: 72px 0; }
-        .section-bg { background: var(--color-gray-50); }
+      /* ── SECTIONS ── */
+      .section {
+        padding: 72px 0;
+      }
+      .section-bg {
+        background: var(--color-gray-50);
+      }
 
-        /* ── GRID CARDS ── */
-        .grid { display: grid; gap: 24px; }
-        .grid-4 { grid-template-columns: repeat(4, 1fr); }
+      /* ── GRID CARDS ── */
+      .grid {
+        display: grid;
+        gap: 24px;
+      }
+      .grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+      }
 
-        .book-card {
-          background: var(--color-white); border-radius: 10px; overflow: hidden;
-          border: 1px solid var(--color-gray-100); transition: var(--transition);
-        }
-        .book-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--color-gray-300); }
-        .book-cover { width: 100%; height: 260px; object-fit: cover; border-bottom: 1px solid var(--color-gray-100); }
-        .book-info { padding: 16px; }
-        .book-category { font-size: 0.72rem; color: var(--color-orange); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; display: block; font-weight: 600; }
-        .book-title { font-size: 1rem; margin-bottom: 3px; color: var(--color-black); font-weight: 600; }
-        .book-author { font-size: 0.82rem; color: var(--color-gray-600); margin-bottom: 14px; }
-        .book-footer { display: flex; justify-content: space-between; align-items: center; }
-        .book-price { font-weight: 700; font-size: 1rem; color: var(--color-black); }
+      .book-card {
+        background: var(--color-white);
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid var(--color-gray-100);
+        transition: var(--transition);
+      }
+      .book-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--color-gray-300);
+      }
+      .book-cover {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        border-bottom: 1px solid var(--color-gray-100);
+      }
+      .book-info {
+        padding: 16px;
+      }
+      .book-category {
+        font-size: 0.72rem;
+        color: var(--color-orange);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-bottom: 6px;
+        display: block;
+        font-weight: 600;
+      }
+      .book-title {
+        font-size: 1rem;
+        margin-bottom: 3px;
+        color: var(--color-black);
+        font-weight: 600;
+      }
+      .book-author {
+        font-size: 0.82rem;
+        color: var(--color-gray-600);
+        margin-bottom: 14px;
+      }
+      .book-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .book-price {
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--color-black);
+      }
 
-        /* ── BESTSELLERS LIST ── */
-        .section-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; flex-wrap: wrap; gap: 14px; }
-        .section-header h2 { margin-bottom: 0; }
+      /* ── BESTSELLERS LIST ── */
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+      .section-header h2 {
+        margin-bottom: 0;
+      }
 
-        .list-filters { display: flex; gap: 8px; flex-wrap: wrap; }
-        .filter-btn {
-          background: var(--color-white); border: 1px solid var(--color-gray-300);
-          border-radius: 20px; padding: 6px 16px; font-size: 0.78rem; font-weight: 500;
-          cursor: pointer; font-family: 'Inter', sans-serif; transition: var(--transition);
-          color: var(--color-gray-600);
-        }
-        .filter-btn:hover, .filter-btn.active { background: var(--color-orange); border-color: var(--color-orange); color: var(--color-white); }
+      .list-filters {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .filter-btn {
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-300);
+        border-radius: 20px;
+        padding: 6px 16px;
+        font-size: 0.78rem;
+        font-weight: 500;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+        transition: var(--transition);
+        color: var(--color-gray-600);
+      }
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--color-orange);
+        border-color: var(--color-orange);
+        color: var(--color-white);
+      }
 
-        .list-books { display: flex; flex-direction: column; gap: 16px; }
+      .list-books {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
 
-        .list-card {
-          position: relative; background: var(--color-white);
-          border: 1px solid var(--color-gray-100); border-radius: 12px;
-          display: flex; align-items: flex-start; gap: 24px; padding: 20px;
-          transition: var(--transition);
-        }
-        .list-card:hover { box-shadow: var(--shadow-md); border-color: var(--color-gray-300); transform: translateY(-2px); }
+      .list-card {
+        position: relative;
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-100);
+        border-radius: 12px;
+        display: flex;
+        align-items: flex-start;
+        gap: 24px;
+        padding: 20px;
+        transition: var(--transition);
+      }
+      .list-card:hover {
+        box-shadow: var(--shadow-md);
+        border-color: var(--color-gray-300);
+        transform: translateY(-2px);
+      }
 
-        .list-badge {
-          position: absolute; top: 14px; left: 14px;
-          background: var(--color-orange); color: var(--color-white);
-          font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
-          letter-spacing: 0.08em; padding: 3px 9px; border-radius: 20px; z-index: 2;
-        }
+      .list-badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: var(--color-orange);
+        color: var(--color-white);
+        font-size: 0.6rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        padding: 3px 9px;
+        border-radius: 20px;
+        z-index: 2;
+      }
 
-        .list-cover-wrap { position: relative; flex-shrink: 0; }
-        .list-cover {
-          width: 130px; height: 190px; object-fit: cover;
-          border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,0.13); display: block;
-        }
+      .list-cover-wrap {
+        position: relative;
+        flex-shrink: 0;
+      }
+      .list-cover {
+        width: 130px;
+        height: 190px;
+        object-fit: cover;
+        border-radius: 6px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.13);
+        display: block;
+      }
 
-        .list-details { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+      .list-details {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
 
-        .list-title {
-          font-size: 1.05rem; font-weight: 700; color: var(--color-black);
-          line-height: 1.35; margin: 0; transition: color 0.2s;
-        }
-        .list-title:hover { color: var(--color-orange); cursor: pointer; }
+      .list-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: var(--color-black);
+        line-height: 1.35;
+        margin: 0;
+        transition: color 0.2s;
+      }
+      .list-title:hover {
+        color: var(--color-orange);
+        cursor: pointer;
+      }
 
-        .list-author { font-size: 0.83rem; color: var(--color-orange); font-weight: 500; margin: 0; }
-        .list-series { font-size: 0.78rem; color: var(--color-gray-600); margin: 0; }
+      .list-author {
+        font-size: 0.83rem;
+        color: var(--color-orange);
+        font-weight: 500;
+        margin: 0;
+      }
+      .list-series {
+        font-size: 0.78rem;
+        color: var(--color-gray-600);
+        margin: 0;
+      }
 
-        .list-stars { display: flex; align-items: center; gap: 5px; }
-        .stars { color: var(--color-orange); font-size: 0.9rem; letter-spacing: 0.5px; line-height: 1; }
-        .review-count { font-size: 0.75rem; color: var(--color-gray-600); }
+      .list-stars {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .stars {
+        color: var(--color-orange);
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+        line-height: 1;
+      }
+      .review-count {
+        font-size: 0.75rem;
+        color: var(--color-gray-600);
+      }
 
-        .list-desc {
-          font-size: 0.82rem; color: var(--color-gray-600); line-height: 1.55;
-          margin: 2px 0; display: -webkit-box; -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical; overflow: hidden;
-        }
+      .list-desc {
+        font-size: 0.82rem;
+        color: var(--color-gray-600);
+        line-height: 1.55;
+        margin: 2px 0;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
 
-        .list-formats { display: flex; gap: 5px; flex-wrap: wrap; margin-top: 2px; }
-        .format-tag {
-          font-size: 0.68rem; padding: 3px 9px; border-radius: 4px;
-          border: 1px solid var(--color-gray-300); color: var(--color-gray-600); font-weight: 500;
-        }
-        .active-format { background: var(--color-black); color: var(--color-white); border-color: var(--color-black); }
+      .list-formats {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+        margin-top: 2px;
+      }
+      .format-tag {
+        font-size: 0.68rem;
+        padding: 3px 9px;
+        border-radius: 4px;
+        border: 1px solid var(--color-gray-300);
+        color: var(--color-gray-600);
+        font-weight: 500;
+      }
+      .active-format {
+        background: var(--color-black);
+        color: var(--color-white);
+        border-color: var(--color-black);
+      }
 
-        .list-pricing { display: flex; align-items: baseline; gap: 10px; margin-top: 4px; }
-        .list-price { font-size: 1.45rem; font-weight: 700; color: var(--color-black); line-height: 1; }
-        .list-price sup { font-size: 0.7rem; font-weight: 700; vertical-align: super; }
-        .list-old-price { font-size: 0.8rem; color: var(--color-gray-600); text-decoration: line-through; }
-        .list-free-badge {
-          background: #1a9aef; color: var(--color-white);
-          font-size: 0.72rem; padding: 3px 9px; border-radius: 4px; font-family: serif;
-        }
-        .list-buy-alt { font-size: 0.75rem; color: var(--color-gray-600); margin: 2px 0 0; }
+      .list-pricing {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin-top: 4px;
+      }
+      .list-price {
+        font-size: 1.45rem;
+        font-weight: 700;
+        color: var(--color-black);
+        line-height: 1;
+      }
+      .list-price sup {
+        font-size: 0.7rem;
+        font-weight: 700;
+        vertical-align: super;
+      }
+      .list-old-price {
+        font-size: 0.8rem;
+        color: var(--color-gray-600);
+        text-decoration: line-through;
+      }
+      .list-free-badge {
+        background: #1a9aef;
+        color: var(--color-white);
+        font-size: 0.72rem;
+        padding: 3px 9px;
+        border-radius: 4px;
+        font-family: serif;
+      }
+      .list-buy-alt {
+        font-size: 0.75rem;
+        color: var(--color-gray-600);
+        margin: 2px 0 0;
+      }
 
-        .list-actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+      .list-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 8px;
+        flex-wrap: wrap;
+      }
 
-        /* ── FOOTER ── */
-        .footer { background: var(--color-black); color: var(--color-white); padding: 56px 0 28px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
-        .footer h3 { color: var(--color-white); font-size: 0.95rem; margin-bottom: 20px; }
-        .footer p, .footer a { color: #aaaaaa; font-size: 0.85rem; }
-        .footer a:hover { color: var(--color-orange); }
-        .footer-links li { margin-bottom: 10px; }
+      /* ── FOOTER ── */
+      .footer {
+        background: var(--color-black);
+        color: var(--color-white);
+        padding: 56px 0 28px;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 48px;
+        margin-bottom: 40px;
+      }
+      .footer h3 {
+        color: var(--color-white);
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+      }
+      .footer p,
+      .footer a {
+        color: #aaaaaa;
+        font-size: 0.85rem;
+      }
+      .footer a:hover {
+        color: var(--color-orange);
+      }
+      .footer-links li {
+        margin-bottom: 10px;
+      }
 
-        /* Social Icons */
-        .social-links { display: flex; gap: 10px; flex-wrap: wrap; }
-        .social-icon {
-          display: flex; align-items: center; justify-content: center;
-          width: 36px; height: 36px; border-radius: 8px;
-          background: rgba(255,255,255,0.07);
-          border: 1px solid rgba(255,255,255,0.1);
-          transition: var(--transition); flex-shrink: 0;
-        }
-        .social-icon svg { width: 15px; height: 15px; fill: #aaaaaa; transition: var(--transition); display: block; }
-        .social-icon:hover {
-          background: var(--si-color, var(--color-orange));
-          border-color: var(--si-color, var(--color-orange));
-          transform: translateY(-3px);
-          box-shadow: 0 6px 18px rgba(0,0,0,0.35);
-        }
-        .social-icon:hover svg { fill: #ffffff; }
+      /* Social Icons */
+      .social-links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .social-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: var(--transition);
+        flex-shrink: 0;
+      }
+      .social-icon svg {
+        width: 15px;
+        height: 15px;
+        fill: #aaaaaa;
+        transition: var(--transition);
+        display: block;
+      }
+      .social-icon:hover {
+        background: var(--si-color, var(--color-orange));
+        border-color: var(--si-color, var(--color-orange));
+        transform: translateY(-3px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      }
+      .social-icon:hover svg {
+        fill: #ffffff;
+      }
 
-        .footer-bottom {
-          text-align: center; padding-top: 20px;
-          border-top: 1px solid #1f1f1f;
-          font-size: 0.72rem; color: #555;
-        }
+      .footer-bottom {
+        text-align: center;
+        padding-top: 20px;
+        border-top: 1px solid #1f1f1f;
+        font-size: 0.72rem;
+        color: #555;
+      }
 
-        /* ══════════════════════════════════
+      /* ══════════════════════════════════
            RESPONSIVE
         ══════════════════════════════════ */
-        @media (max-width: 992px) {
-          .grid-4 { grid-template-columns: repeat(2, 1fr); }
-          .footer-grid { grid-template-columns: 1fr 1fr; }
-          .list-cover { width: 110px; height: 160px; }
+      @media (max-width: 992px) {
+        .grid-4 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .list-cover {
+          width: 110px;
+          height: 160px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2rem;
+        }
+        h2 {
+          font-size: 1.6rem;
+        }
+        .section {
+          padding: 52px 0;
+        }
+        .hero {
+          padding: 64px 0;
         }
 
-        @media (max-width: 768px) {
-          h1 { font-size: 2rem; }
-          h2 { font-size: 1.6rem; }
-          .section { padding: 52px 0; }
-          .hero { padding: 64px 0; }
-
-          .menu-toggle { display: block; }
-          .nav-links {
-            position: absolute; top: 72px; left: 0; right: 0;
-            background: var(--color-white); flex-direction: column;
-            padding: 20px 24px; gap: 20px;
-            border-bottom: 1px solid var(--color-gray-100);
-            box-shadow: var(--shadow-sm);
-            transform: translateY(-110%); opacity: 0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            z-index: 999;
-          }
-          .nav-links.active { transform: translateY(0); opacity: 1; }
-
-          .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-
-          /* List card – tablet */
-          .list-card { padding: 14px; gap: 14px; }
-          .list-cover { width: 100px; height: 148px; }
-          .list-title { font-size: 0.96rem; }
-          .list-price { font-size: 1.25rem; }
-          .list-desc { -webkit-line-clamp: 2; }
+        .menu-toggle {
+          display: block;
+        }
+        .nav-links {
+          position: absolute;
+          top: 72px;
+          left: 0;
+          right: 0;
+          background: var(--color-white);
+          flex-direction: column;
+          padding: 20px 24px;
+          gap: 20px;
+          border-bottom: 1px solid var(--color-gray-100);
+          box-shadow: var(--shadow-sm);
+          transform: translateY(-110%);
+          opacity: 0;
+          transition:
+            transform 0.3s ease,
+            opacity 0.3s ease;
+          z-index: 999;
+        }
+        .nav-links.active {
+          transform: translateY(0);
+          opacity: 1;
         }
 
-        @media (max-width: 540px) {
-          /* Grid cards → 2 columns */
-          .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-          .book-cover { height: 160px; }
-          .book-info { padding: 10px 12px 14px; }
-          .book-title { font-size: 0.88rem; }
-          .book-author { font-size: 0.75rem; margin-bottom: 10px; }
-          .book-price { font-size: 0.9rem; }
-          .book-footer .btn { padding: 5px 10px; font-size: 0.7rem; }
-
-          /* List card – MOBILE: Amazon style */
-          .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
-          .list-filters { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
-          .filter-btn { flex-shrink: 0; }
-
-          .list-card {
-            padding: 12px;
-            gap: 12px;
-            align-items: flex-start;
-            border-radius: 10px;
-          }
-          .list-badge { top: 10px; left: 10px; font-size: 0.55rem; padding: 3px 7px; }
-          .list-cover { width: 95px; height: 138px; border-radius: 5px; }
-
-          .list-details { gap: 4px; }
-          .list-title { font-size: 0.9rem; -webkit-line-clamp: 3; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
-          .list-author { font-size: 0.78rem; }
-          .list-series { font-size: 0.72rem; }
-          .stars { font-size: 0.8rem; }
-          .review-count { font-size: 0.7rem; }
-          .list-desc { display: none; }
-          .list-formats { display: none; }
-          .list-pricing { margin-top: 3px; gap: 6px; }
-          .list-price { font-size: 1.15rem; }
-          .list-old-price { font-size: 0.73rem; }
-          .list-buy-alt { font-size: 0.7rem; }
-          .list-actions { gap: 6px; margin-top: 6px; }
-          .list-actions .btn { padding: 7px 12px; font-size: 0.74rem; border-radius: 5px; }
-
-          /* Footer */
-          .footer-grid { grid-template-columns: 1fr; gap: 28px; }
-          .footer { padding: 40px 0 20px; }
-
-          /* Hero */
-          .hero-btns { flex-direction: column; align-items: center; }
-          .hero-btns .btn { width: 100%; max-width: 280px; }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 32px;
         }
+
+        /* List card – tablet */
+        .list-card {
+          padding: 14px;
+          gap: 14px;
+        }
+        .list-cover {
+          width: 100px;
+          height: 148px;
+        }
+        .list-title {
+          font-size: 0.96rem;
+        }
+        .list-price {
+          font-size: 1.25rem;
+        }
+        .list-desc {
+          -webkit-line-clamp: 2;
+        }
+      }
+
+      @media (max-width: 540px) {
+        /* Grid cards → 2 columns */
+        .grid-4 {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 12px;
+        }
+        .book-cover {
+          height: 160px;
+        }
+        .book-info {
+          padding: 10px 12px 14px;
+        }
+        .book-title {
+          font-size: 0.88rem;
+        }
+        .book-author {
+          font-size: 0.75rem;
+          margin-bottom: 10px;
+        }
+        .book-price {
+          font-size: 0.9rem;
+        }
+        .book-footer .btn {
+          padding: 5px 10px;
+          font-size: 0.7rem;
+        }
+
+        /* List card – MOBILE: Amazon style */
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+        .list-filters {
+          overflow-x: auto;
+          flex-wrap: nowrap;
+          padding-bottom: 4px;
+        }
+        .filter-btn {
+          flex-shrink: 0;
+        }
+
+        .list-card {
+          padding: 12px;
+          gap: 12px;
+          align-items: flex-start;
+          border-radius: 10px;
+        }
+        .list-badge {
+          top: 10px;
+          left: 10px;
+          font-size: 0.55rem;
+          padding: 3px 7px;
+        }
+        .list-cover {
+          width: 95px;
+          height: 138px;
+          border-radius: 5px;
+        }
+
+        .list-details {
+          gap: 4px;
+        }
+        .list-title {
+          font-size: 0.9rem;
+          -webkit-line-clamp: 3;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+        .list-author {
+          font-size: 0.78rem;
+        }
+        .list-series {
+          font-size: 0.72rem;
+        }
+        .stars {
+          font-size: 0.8rem;
+        }
+        .review-count {
+          font-size: 0.7rem;
+        }
+        .list-desc {
+          display: none;
+        }
+        .list-formats {
+          display: none;
+        }
+        .list-pricing {
+          margin-top: 3px;
+          gap: 6px;
+        }
+        .list-price {
+          font-size: 1.15rem;
+        }
+        .list-old-price {
+          font-size: 0.73rem;
+        }
+        .list-buy-alt {
+          font-size: 0.7rem;
+        }
+        .list-actions {
+          gap: 6px;
+          margin-top: 6px;
+        }
+        .list-actions .btn {
+          padding: 7px 12px;
+          font-size: 0.74rem;
+          border-radius: 5px;
+        }
+
+        /* Footer */
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .footer {
+          padding: 40px 0 20px;
+        }
+
+        /* Hero */
+        .hero-btns {
+          flex-direction: column;
+          align-items: center;
+        }
+        .hero-btns .btn {
+          width: 100%;
+          max-width: 280px;
+        }
+      }
     </style>
-</head>
-<body>
-
-<!-- ═══ NAVBAR ═══ -->
-<nav class="navbar">
-    <div class="container">
+  </head>
+  <body>
+    <!-- ═══ NAVBAR ═══ -->
+    <nav class="navbar">
+      <div class="container">
         <a href="#" class="logo">Mnyilinga Books</a>
         <button class="menu-toggle" aria-label="Toggle menu">
-            <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+          <svg viewBox="0 0 24 24">
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
         </button>
         <ul class="nav-links">
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="#">Shop</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
         </ul>
-    </div>
-</nav>
+      </div>
+    </nav>
 
-<!-- ═══ HERO ═══ -->
-<header class="hero">
-    <div class="container">
+    <!-- ═══ HERO ═══ -->
+    <header class="hero">
+      <div class="container">
         <h1>Curated reads for the modern mind.</h1>
-        <p>Discover our handpicked collection of fiction, business, and technology books designed to inspire and educate.</p>
+        <p>
+          Discover our handpicked collection of fiction, business, and
+          technology books designed to inspire and educate.
+        </p>
         <div class="hero-btns">
-            <a href="#" class="btn btn-primary">Shop Collection</a>
-            <a href="#" class="btn btn-outline">Story Books</a>
+          <a href="#" class="btn btn-primary">Shop Collection</a>
+          <a href="#" class="btn btn-outline">Story Books</a>
         </div>
-    </div>
-</header>
+      </div>
+    </header>
 
-<!-- ═══ FEATURED BOOKS (grid) ═══ -->
-<section class="section">
-    <div class="container">
-        <h2 style="margin-bottom:24px;">Featured Books</h2>
+    <!-- ═══ FEATURED BOOKS (grid) ═══ -->
+    <section class="section">
+      <div class="container">
+        <h2 style="margin-bottom: 24px">Featured Books</h2>
         <div class="grid grid-4">
-
-            <article class="book-card">
-                <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=400" alt="The Silent Echo" class="book-cover">
-                <div class="book-info">
-                    <span class="book-category">Fiction</span>
-                    <h3 class="book-title">The Silent Echo</h3>
-                    <p class="book-author">Sarah Jenkins</p>
-                    <div class="book-footer">
-                        <span class="book-price">TZS 18,999</span>
-                        <a href="#" class="btn btn-outline btn-sm">Details</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="book-card">
-                <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=400" alt="Minimalist Startup" class="book-cover">
-                <div class="book-info">
-                    <span class="book-category">Business</span>
-                    <h3 class="book-title">Minimalist Startup</h3>
-                    <p class="book-author">David Chen</p>
-                    <div class="book-footer">
-                        <span class="book-price">TZS 24,000</span>
-                        <a href="#" class="btn btn-outline btn-sm">Details</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="book-card">
-                <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=400" alt="Code & Culture" class="book-cover">
-                <div class="book-info">
-                    <span class="book-category">Technology</span>
-                    <h3 class="book-title">Code &amp; Culture</h3>
-                    <p class="book-author">Elena Rostova</p>
-                    <div class="book-footer">
-                        <span class="book-price">TZS 29,500</span>
-                        <a href="#" class="btn btn-outline btn-sm">Details</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="book-card">
-                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=400" alt="Grid Systems" class="book-cover">
-                <div class="book-info">
-                    <span class="book-category">Design</span>
-                    <h3 class="book-title">Grid Systems</h3>
-                    <p class="book-author">Marcus Webb</p>
-                    <div class="book-footer">
-                        <span class="book-price">TZS 32,000</span>
-                        <a href="#" class="btn btn-outline btn-sm">Details</a>
-                    </div>
-                </div>
-            </article>
-
-        </div>
-    </div>
-</section>
-
-<!-- ═══ BEST SELLERS (list view) ═══ -->
-<section class="section section-bg">
-    <div class="container">
-
-        <div class="section-header">
-            <h2>Best Sellers This Week</h2>
-            <div class="list-filters">
-                <button class="filter-btn active" onclick="filterBooks(this,'all')">All</button>
-                <button class="filter-btn" onclick="filterBooks(this,'productivity')">Productivity</button>
-                <button class="filter-btn" onclick="filterBooks(this,'self-dev')">Self-Dev</button>
-                <button class="filter-btn" onclick="filterBooks(this,'business')">Business</button>
+          <article class="book-card">
+            <img
+              src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=400"
+              alt="The Silent Echo"
+              class="book-cover"
+            />
+            <div class="book-info">
+              <span class="book-category">Fiction</span>
+              <h3 class="book-title">The Silent Echo</h3>
+              <p class="book-author">Sarah Jenkins</p>
+              <div class="book-footer">
+                <span class="book-price">TZS 18,999</span>
+                <a href="#" class="btn btn-outline btn-sm">Details</a>
+              </div>
             </div>
+          </article>
+
+          <article class="book-card">
+            <img
+              src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=400"
+              alt="Minimalist Startup"
+              class="book-cover"
+            />
+            <div class="book-info">
+              <span class="book-category">Business</span>
+              <h3 class="book-title">Minimalist Startup</h3>
+              <p class="book-author">David Chen</p>
+              <div class="book-footer">
+                <span class="book-price">TZS 24,000</span>
+                <a href="#" class="btn btn-outline btn-sm">Details</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <img
+              src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=400"
+              alt="Code & Culture"
+              class="book-cover"
+            />
+            <div class="book-info">
+              <span class="book-category">Technology</span>
+              <h3 class="book-title">Code &amp; Culture</h3>
+              <p class="book-author">Elena Rostova</p>
+              <div class="book-footer">
+                <span class="book-price">TZS 29,500</span>
+                <a href="#" class="btn btn-outline btn-sm">Details</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <img
+              src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=400"
+              alt="Grid Systems"
+              class="book-cover"
+            />
+            <div class="book-info">
+              <span class="book-category">Design</span>
+              <h3 class="book-title">Grid Systems</h3>
+              <p class="book-author">Marcus Webb</p>
+              <div class="book-footer">
+                <span class="book-price">TZS 32,000</span>
+                <a href="#" class="btn btn-outline btn-sm">Details</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ BEST SELLERS (list view) ═══ -->
+    <section class="section section-bg">
+      <div class="container">
+        <div class="section-header">
+          <h2>Best Sellers This Week</h2>
+          <div class="list-filters">
+            <button
+              class="filter-btn active"
+              onclick="filterBooks(this, 'all')"
+            >
+              All
+            </button>
+            <button
+              class="filter-btn"
+              onclick="filterBooks(this, 'productivity')"
+            >
+              Productivity
+            </button>
+            <button class="filter-btn" onclick="filterBooks(this, 'self-dev')">
+              Self-Dev
+            </button>
+            <button class="filter-btn" onclick="filterBooks(this, 'business')">
+              Business
+            </button>
+          </div>
         </div>
 
         <div class="list-books">
+          <!-- 1 -->
+          <article class="list-card" data-category="productivity">
+            <div class="list-badge">Bestseller</div>
+            <div class="list-cover-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&q=80&w=300&h=420"
+                alt="Deep Work"
+                class="list-cover"
+              />
+            </div>
+            <div class="list-details">
+              <span class="book-category">Productivity</span>
+              <h3 class="list-title">
+                Deep Work: Rules for Focused Success in a Distracted World
+              </h3>
+              <p class="list-author">by Cal Newport</p>
+              <p class="list-series">
+                Book 1 of 3 &middot; Focus Mastery Series
+              </p>
+              <div class="list-stars">
+                <span class="stars">★★★★★</span>
+                <span class="review-count">(4.8 &middot; 12.4K reviews)</span>
+              </div>
+              <p class="list-desc">
+                A guide to cultivating deep focus in a distracted world. Newport
+                argues that the ability to concentrate is becoming increasingly
+                rare and simultaneously more valuable.
+              </p>
+              <div class="list-formats">
+                <span class="format-tag active-format">Hardcover</span>
+                <span class="format-tag">Kindle</span>
+                <span class="format-tag">Audiobook</span>
+              </div>
+              <div class="list-pricing">
+                <span class="list-price">TZS 18,500<sup>00</sup></span>
+                <span class="list-old-price">TZS 32,000.00</span>
+              </div>
+              <div class="list-actions">
+                <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+                <a href="#" class="btn btn-outline btn-sm">Details</a>
+              </div>
+            </div>
+          </article>
 
-            <!-- 1 -->
-            <article class="list-card" data-category="productivity">
-                <div class="list-badge">Bestseller</div>
-                <div class="list-cover-wrap">
-                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&q=80&w=300&h=420" alt="Deep Work" class="list-cover">
-                </div>
-                <div class="list-details">
-                    <span class="book-category">Productivity</span>
-                    <h3 class="list-title">Deep Work: Rules for Focused Success in a Distracted World</h3>
-                    <p class="list-author">by Cal Newport</p>
-                    <p class="list-series">Book 1 of 3 &middot; Focus Mastery Series</p>
-                    <div class="list-stars">
-                        <span class="stars">★★★★★</span>
-                        <span class="review-count">(4.8 &middot; 12.4K reviews)</span>
-                    </div>
-                    <p class="list-desc">A guide to cultivating deep focus in a distracted world. Newport argues that the ability to concentrate is becoming increasingly rare and simultaneously more valuable.</p>
-                    <div class="list-formats">
-                        <span class="format-tag active-format">Hardcover</span>
-                        <span class="format-tag">Kindle</span>
-                        <span class="format-tag">Audiobook</span>
-                    </div>
-                    <div class="list-pricing">
-                        <span class="list-price">TZS 18,500<sup>00</sup></span>
-                        <span class="list-old-price">TZS 32,000.00</span>
-                    </div>
-                    <div class="list-actions">
-                        <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
-                        <a href="#" class="btn btn-outline btn-sm">Details</a>
-                    </div>
-                </div>
-            </article>
+          <!-- 2 -->
+          <article class="list-card" data-category="self-dev">
+            <div class="list-badge" style="background: var(--color-black)">
+              New
+            </div>
+            <div class="list-cover-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&q=80&w=300&h=420"
+                alt="Atomic Habits"
+                class="list-cover"
+              />
+            </div>
+            <div class="list-details">
+              <span class="book-category">Self-Development</span>
+              <h3 class="list-title">
+                Atomic Habits: Tiny Changes, Remarkable Results
+              </h3>
+              <p class="list-author">by James Clear</p>
+              <p class="list-series">Standalone &middot; Self-Help</p>
+              <div class="list-stars">
+                <span class="stars">★★★★★</span>
+                <span class="review-count">(4.9 &middot; 38.2K reviews)</span>
+              </div>
+              <p class="list-desc">
+                An easy and proven way to build good habits and break bad ones.
+                Clear distills the most fundamental information about habits
+                into a practical framework.
+              </p>
+              <div class="list-formats">
+                <span class="format-tag active-format">Hardcover</span>
+                <span class="format-tag">Kindle</span>
+                <span class="format-tag">Audiobook</span>
+              </div>
+              <div class="list-pricing">
+                <span class="list-price">TZS 0<sup>00</sup></span>
+                <span class="list-free-badge"
+                  >kindle<strong>unlimited</strong></span
+                >
+              </div>
+              <p class="list-buy-alt">Or TZS 24,500.00 to buy</p>
+              <div class="list-actions">
+                <a href="#" class="btn btn-primary btn-sm">Read Free</a>
+                <a href="#" class="btn btn-outline btn-sm">Details</a>
+              </div>
+            </div>
+          </article>
 
-            <!-- 2 -->
-            <article class="list-card" data-category="self-dev">
-                <div class="list-badge" style="background:var(--color-black);">New</div>
-                <div class="list-cover-wrap">
-                    <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&q=80&w=300&h=420" alt="Atomic Habits" class="list-cover">
-                </div>
-                <div class="list-details">
-                    <span class="book-category">Self-Development</span>
-                    <h3 class="list-title">Atomic Habits: Tiny Changes, Remarkable Results</h3>
-                    <p class="list-author">by James Clear</p>
-                    <p class="list-series">Standalone &middot; Self-Help</p>
-                    <div class="list-stars">
-                        <span class="stars">★★★★★</span>
-                        <span class="review-count">(4.9 &middot; 38.2K reviews)</span>
-                    </div>
-                    <p class="list-desc">An easy and proven way to build good habits and break bad ones. Clear distills the most fundamental information about habits into a practical framework.</p>
-                    <div class="list-formats">
-                        <span class="format-tag active-format">Hardcover</span>
-                        <span class="format-tag">Kindle</span>
-                        <span class="format-tag">Audiobook</span>
-                    </div>
-                    <div class="list-pricing">
-                        <span class="list-price">TZS 0<sup>00</sup></span>
-                        <span class="list-free-badge">kindle<strong>unlimited</strong></span>
-                    </div>
-                    <p class="list-buy-alt">Or TZS 24,500.00 to buy</p>
-                    <div class="list-actions">
-                        <a href="#" class="btn btn-primary btn-sm">Read Free</a>
-                        <a href="#" class="btn btn-outline btn-sm">Details</a>
-                    </div>
-                </div>
-            </article>
+          <!-- 3 -->
+          <article class="list-card" data-category="business">
+            <div class="list-cover-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&q=80&w=300&h=420"
+                alt="Psychology of Money"
+                class="list-cover"
+              />
+            </div>
+            <div class="list-details">
+              <span class="book-category">Finance</span>
+              <h3 class="list-title">
+                The Psychology of Money: Timeless Lessons on Wealth
+              </h3>
+              <p class="list-author">by Morgan Housel</p>
+              <p class="list-series">Standalone &middot; Personal Finance</p>
+              <div class="list-stars">
+                <span class="stars"
+                  >★★★★<span style="color: var(--color-gray-300)">★</span></span
+                >
+                <span class="review-count">(4.6 &middot; 21.7K reviews)</span>
+              </div>
+              <p class="list-desc">
+                Timeless lessons on wealth, greed, and happiness. Doing well
+                with money isn't about what you know — it's about how you
+                behave.
+              </p>
+              <div class="list-formats">
+                <span class="format-tag active-format">Paperback</span>
+                <span class="format-tag">Kindle</span>
+              </div>
+              <div class="list-pricing">
+                <span class="list-price">TZS 14,900<sup>00</sup></span>
+                <span class="list-old-price">TZS 28,000.00</span>
+              </div>
+              <div class="list-actions">
+                <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+                <a href="#" class="btn btn-outline btn-sm">Details</a>
+              </div>
+            </div>
+          </article>
 
-            <!-- 3 -->
-            <article class="list-card" data-category="business">
-                <div class="list-cover-wrap">
-                    <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&q=80&w=300&h=420" alt="Psychology of Money" class="list-cover">
-                </div>
-                <div class="list-details">
-                    <span class="book-category">Finance</span>
-                    <h3 class="list-title">The Psychology of Money: Timeless Lessons on Wealth</h3>
-                    <p class="list-author">by Morgan Housel</p>
-                    <p class="list-series">Standalone &middot; Personal Finance</p>
-                    <div class="list-stars">
-                        <span class="stars">★★★★<span style="color:var(--color-gray-300)">★</span></span>
-                        <span class="review-count">(4.6 &middot; 21.7K reviews)</span>
-                    </div>
-                    <p class="list-desc">Timeless lessons on wealth, greed, and happiness. Doing well with money isn't about what you know — it's about how you behave.</p>
-                    <div class="list-formats">
-                        <span class="format-tag active-format">Paperback</span>
-                        <span class="format-tag">Kindle</span>
-                    </div>
-                    <div class="list-pricing">
-                        <span class="list-price">TZS 14,900<sup>00</sup></span>
-                        <span class="list-old-price">TZS 28,000.00</span>
-                    </div>
-                    <div class="list-actions">
-                        <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
-                        <a href="#" class="btn btn-outline btn-sm">Details</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- 4 -->
-            <article class="list-card" data-category="business">
-                <div class="list-badge" style="background:#27ae60;">Sale</div>
-                <div class="list-cover-wrap">
-                    <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&q=80&w=300&h=420" alt="Zero to One" class="list-cover">
-                </div>
-                <div class="list-details">
-                    <span class="book-category">Business</span>
-                    <h3 class="list-title">Zero to One: Notes on Startups, or How to Build the Future</h3>
-                    <p class="list-author">by Peter Thiel &amp; Blake Masters</p>
-                    <p class="list-series">Standalone &middot; Entrepreneurship</p>
-                    <div class="list-stars">
-                        <span class="stars">★★★★<span style="color:var(--color-gray-300)">★</span></span>
-                        <span class="review-count">(4.5 &middot; 9.8K reviews)</span>
-                    </div>
-                    <p class="list-desc">The great secret of our time is that there are still uncharted frontiers to explore and new inventions to create. Build something entirely new.</p>
-                    <div class="list-formats">
-                        <span class="format-tag active-format">Hardcover</span>
-                        <span class="format-tag">Kindle</span>
-                        <span class="format-tag">Audiobook</span>
-                    </div>
-                    <div class="list-pricing">
-                        <span class="list-price">TZS 22,000<sup>00</sup></span>
-                        <span class="list-old-price">TZS 38,000.00</span>
-                    </div>
-                    <div class="list-actions">
-                        <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
-                        <a href="#" class="btn btn-outline btn-sm">Details</a>
-                    </div>
-                </div>
-            </article>
-
+          <!-- 4 -->
+          <article class="list-card" data-category="business">
+            <div class="list-badge" style="background: #27ae60">Sale</div>
+            <div class="list-cover-wrap">
+              <img
+                src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&q=80&w=300&h=420"
+                alt="Zero to One"
+                class="list-cover"
+              />
+            </div>
+            <div class="list-details">
+              <span class="book-category">Business</span>
+              <h3 class="list-title">
+                Zero to One: Notes on Startups, or How to Build the Future
+              </h3>
+              <p class="list-author">by Peter Thiel &amp; Blake Masters</p>
+              <p class="list-series">Standalone &middot; Entrepreneurship</p>
+              <div class="list-stars">
+                <span class="stars"
+                  >★★★★<span style="color: var(--color-gray-300)">★</span></span
+                >
+                <span class="review-count">(4.5 &middot; 9.8K reviews)</span>
+              </div>
+              <p class="list-desc">
+                The great secret of our time is that there are still uncharted
+                frontiers to explore and new inventions to create. Build
+                something entirely new.
+              </p>
+              <div class="list-formats">
+                <span class="format-tag active-format">Hardcover</span>
+                <span class="format-tag">Kindle</span>
+                <span class="format-tag">Audiobook</span>
+              </div>
+              <div class="list-pricing">
+                <span class="list-price">TZS 22,000<sup>00</sup></span>
+                <span class="list-old-price">TZS 38,000.00</span>
+              </div>
+              <div class="list-actions">
+                <a href="#" class="btn btn-primary btn-sm">Add to Cart</a>
+                <a href="#" class="btn btn-outline btn-sm">Details</a>
+              </div>
+            </div>
+          </article>
         </div>
 
-        <div style="text-align:center;margin-top:40px;">
-            <a href="#" class="btn btn-outline" style="padding:12px 40px;">View All Books &rarr;</a>
+        <div style="text-align: center; margin-top: 40px">
+          <a href="#" class="btn btn-outline" style="padding: 12px 40px"
+            >View All Books &rarr;</a
+          >
         </div>
+      </div>
+    </section>
 
-    </div>
-</section>
-
-<!-- ═══ NEWSLETTER ═══ -->
-<section class="section">
-    <div class="container" style="text-align:center;max-width:580px;">
+    <!-- ═══ NEWSLETTER ═══ -->
+    <section class="section">
+      <div class="container" style="text-align: center; max-width: 580px">
         <h2>Join our newsletter</h2>
-        <p>Get updates on new releases, author interviews, and exclusive discounts.</p>
-        <form style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;" onsubmit="event.preventDefault();alert('Subscribed!');">
-            <input type="email" placeholder="Enter your email address" required style="flex:1;min-width:200px;">
-            <button type="submit" class="btn btn-primary">Subscribe</button>
+        <p>
+          Get updates on new releases, author interviews, and exclusive
+          discounts.
+        </p>
+        <form
+          style="display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap"
+          onsubmit="
+            event.preventDefault();
+            alert('Subscribed!');
+          "
+        >
+          <input
+            type="email"
+            placeholder="Enter your email address"
+            required
+            style="flex: 1; min-width: 200px"
+          />
+          <button type="submit" class="btn btn-primary">Subscribe</button>
         </form>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- ═══ FOOTER ═══ -->
-<footer class="footer">
-    <div class="container">
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="footer">
+      <div class="container">
         <div class="footer-grid">
+          <div>
+            <h3
+              class="logo"
+              style="margin-bottom: 14px; color: var(--color-white)"
+            >
+              Mnyilinga Books
+            </h3>
+            <p style="max-width: 280px; line-height: 1.7">
+              A premium destination for readers who appreciate modern design and
+              curated knowledge.
+            </p>
+          </div>
 
-            <div>
-                <h3 class="logo" style="margin-bottom:14px;color:var(--color-white);">Mnyilinga Books</h3>
-                <p style="max-width:280px;line-height:1.7;">A premium destination for readers who appreciate modern design and curated knowledge.</p>
+          <div>
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Connect</h3>
+            <div class="social-links">
+              <!-- Instagram -->
+              <a
+                href="#"
+                aria-label="Instagram"
+                class="social-icon"
+                style="--si-color: #e1306c"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.355 2.618 6.778 6.98 6.978 1.28.058 1.688.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"
+                  />
+                </svg>
+              </a>
+
+              <!-- YouTube -->
+              <a
+                href="#"
+                aria-label="YouTube"
+                class="social-icon"
+                style="--si-color: #ff0000"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                  />
+                </svg>
+              </a>
+
+              <!-- Facebook -->
+              <a
+                href="#"
+                aria-label="Facebook"
+                class="social-icon"
+                style="--si-color: #1877f2"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                  />
+                </svg>
+              </a>
+
+              <!-- TikTok -->
+              <a
+                href="#"
+                aria-label="TikTok"
+                class="social-icon"
+                style="--si-color: #ee1d52"
+              >
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"
+                  />
+                </svg>
+              </a>
             </div>
-
-            <div>
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
-
-            <div>
-                <h3>Connect</h3>
-                <div class="social-links">
-
-
-
-
-
-
-
-                    <!-- Instagram -->
-                   <a href="#" aria-label="Instagram" class="social-icon" style="--si-color:#E1306C">
-    <svg viewBox="0 0 24 24">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.355 2.618 6.778 6.98 6.978 1.28.058 1.688.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/>
-    </svg>
-</a>
-
-
-
-
-
-
-                    <!-- YouTube -->
-                    <a href="#" aria-label="YouTube" class="social-icon" style="--si-color:#FF0000">
-                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    </a>
-
-
-
-
-
-
-                    
-
-
-
-
-                    <!-- Facebook -->
-                    <a href="#" aria-label="Facebook" class="social-icon" style="--si-color:#1877F2">
-                        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                    </a>
-
-
-
-
-
-                    <!-- TikTok -->
-                    <a href="#" aria-label="TikTok" class="social-icon" style="--si-color:#EE1D52">
-                        <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                    </a>
-
-                </div>
-            </div>
-
+          </div>
         </div>
         <div class="footer-bottom">
-            &copy; <span id="current-year"></span> Mnyilinga Digital. All rights reserved.
+          &copy; <span id="current-year"></span> Mnyilinga Digital. All rights
+          reserved.
         </div>
-    </div>
-</footer>
+      </div>
+    </footer>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks   = document.querySelector('.nav-links');
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
         const pathHamburger = "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z";
-        const pathClose     = "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z";
+        const pathClose =
+          "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z";
 
         if (menuToggle && navLinks) {
-            menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                const open = navLinks.classList.contains('active');
-                menuToggle.querySelector('path').setAttribute('d', open ? pathClose : pathHamburger);
-            });
-            // Close on outside click
-            document.addEventListener('click', e => {
-                if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
-                    navLinks.classList.remove('active');
-                    menuToggle.querySelector('path').setAttribute('d', pathHamburger);
-                }
-            });
+          menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            const open = navLinks.classList.contains("active");
+            menuToggle
+              .querySelector("path")
+              .setAttribute("d", open ? pathClose : pathHamburger);
+          });
+          // Close on outside click
+          document.addEventListener("click", (e) => {
+            if (
+              !menuToggle.contains(e.target) &&
+              !navLinks.contains(e.target)
+            ) {
+              navLinks.classList.remove("active");
+              menuToggle.querySelector("path").setAttribute("d", pathHamburger);
+            }
+          });
         }
 
-        const yearSpan = document.getElementById('current-year');
+        const yearSpan = document.getElementById("current-year");
         if (yearSpan) yearSpan.textContent = new Date().getFullYear();
-    });
+      });
 
-    function filterBooks(btn, cat) {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        document.querySelectorAll('.list-card').forEach(card => {
-            card.style.display = (cat === 'all' || card.dataset.category === cat) ? 'flex' : 'none';
+      function filterBooks(btn, cat) {
+        document
+          .querySelectorAll(".filter-btn")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        document.querySelectorAll(".list-card").forEach((card) => {
+          card.style.display =
+            cat === "all" || card.dataset.category === cat ? "flex" : "none";
         });
-    }
-</script>
-</body>
+      }
+    </script>
+  </body>
 </html>
