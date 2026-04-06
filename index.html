@@ -6,9 +6,6 @@
     <title>BookStore | Premium Reading</title>
     
     <style>
-        /* ==========================================================================
-           Design System & Variables
-           ========================================================================== */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
         :root {
@@ -54,7 +51,6 @@
         h3 { font-size: 1.25rem; }
         p { color: var(--color-gray-600); margin-bottom: 1rem; }
 
-        /* Buttons */
         .btn {
           display: inline-flex; align-items: center; justify-content: center;
           padding: 12px 24px; font-size: 0.875rem; font-weight: 500;
@@ -66,7 +62,6 @@
         .btn-outline { background-color: transparent; color: var(--color-black); border-color: var(--color-gray-300); }
         .btn-outline:hover { border-color: var(--color-black); }
 
-        /* Inputs */
         input {
           width: 100%; padding: 14px 16px; border: 1px solid var(--color-gray-300);
           border-radius: 4px; font-family: inherit; font-size: 0.875rem;
@@ -74,7 +69,6 @@
         }
         input:focus { outline: none; border-color: var(--color-orange); background: var(--color-white); }
 
-        /* Navigation */
         .navbar {
           position: sticky; top: 0; background-color: var(--color-white);
           border-bottom: 1px solid var(--color-gray-100); z-index: 1000;
@@ -87,13 +81,11 @@
         .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
         .menu-toggle svg { width: 24px; height: 24px; fill: var(--color-black); }
 
-        /* Layouts */
         .section { padding: 80px 0; }
         .section-bg { background-color: var(--color-gray-50); }
         .grid { display: grid; gap: 32px; }
         .grid-4 { grid-template-columns: repeat(4, 1fr); }
 
-        /* Book Cards */
         .book-card {
           background: var(--color-white); border-radius: 8px; overflow: hidden;
           transition: var(--transition); border: 1px solid var(--color-gray-100);
@@ -107,11 +99,9 @@
         .book-footer { display: flex; justify-content: space-between; align-items: center; }
         .book-price { font-weight: 600; font-size: 1rem; }
 
-        /* Hero */
         .hero { padding: 120px 0; background-color: var(--color-gray-50); text-align: center; }
         .hero p { font-size: 1.125rem; max-width: 600px; margin: 0 auto 32px auto; }
 
-        /* Footer */
         .footer { background-color: var(--color-black); color: var(--color-white); padding: 60px 0 30px; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
         .footer h3 { color: var(--color-white); font-size: 1rem; margin-bottom: 24px; }
@@ -123,7 +113,79 @@
         .social-links a:hover svg { fill: var(--color-orange); }
         .footer-bottom { text-align: center; padding-top: 24px; border-top: 1px solid var(--color-gray-900); font-size: 0.75rem; color: var(--color-gray-600); }
 
-        /* Media Queries */
+        /* ===== LIST VIEW SECTION ===== */
+        .list-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+        .filter-btn {
+          background: var(--color-white); border: 1px solid var(--color-gray-300);
+          border-radius: 20px; padding: 6px 18px; font-size: 0.8rem; font-weight: 500;
+          cursor: pointer; font-family: 'Inter', sans-serif; transition: var(--transition);
+          color: var(--color-gray-600);
+        }
+        .filter-btn:hover, .filter-btn.active {
+          background: var(--color-orange); border-color: var(--color-orange); color: var(--color-white);
+        }
+
+        .list-books { display: flex; flex-direction: column; gap: 20px; }
+
+        .list-card {
+          position: relative; background: var(--color-white);
+          border: 1px solid var(--color-gray-100); border-radius: 12px;
+          display: flex; gap: 28px; padding: 24px; transition: var(--transition); overflow: hidden;
+        }
+        .list-card:hover { box-shadow: var(--shadow-md); border-color: var(--color-gray-300); transform: translateY(-2px); }
+
+        .list-badge {
+          position: absolute; top: 16px; left: 16px;
+          background: var(--color-orange); color: var(--color-white);
+          font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+          letter-spacing: 0.08em; padding: 4px 10px; border-radius: 20px; z-index: 2;
+        }
+
+        .list-cover {
+          width: 145px; min-width: 145px; height: 210px; object-fit: cover;
+          border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); align-self: flex-start;
+        }
+
+        .list-details { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+
+        .list-title {
+          font-size: 1.15rem; font-weight: 700; color: var(--color-black);
+          line-height: 1.3; margin: 0; transition: var(--transition);
+        }
+        .list-title:hover { color: var(--color-orange); cursor: pointer; }
+
+        .list-author { font-size: 0.875rem; color: var(--color-orange); font-weight: 500; margin: 0; }
+        .list-series { font-size: 0.8rem; color: var(--color-gray-600); margin: 0; }
+
+        .list-stars { display: flex; align-items: center; gap: 6px; margin-top: 2px; }
+        .stars { color: var(--color-orange); font-size: 1rem; letter-spacing: 1px; }
+        .review-count { font-size: 0.78rem; color: var(--color-gray-600); }
+
+        .list-desc {
+          font-size: 0.85rem; color: var(--color-gray-600); line-height: 1.6; margin: 4px 0;
+          display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+        }
+
+        .list-formats { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+        .format-tag {
+          font-size: 0.72rem; padding: 3px 10px; border-radius: 4px;
+          border: 1px solid var(--color-gray-300); color: var(--color-gray-600); font-weight: 500;
+        }
+        .active-format { background: var(--color-black); color: var(--color-white); border-color: var(--color-black); }
+
+        .list-pricing { display: flex; align-items: baseline; gap: 12px; margin-top: 6px; }
+        .list-price { font-size: 1.5rem; font-weight: 700; color: var(--color-black); line-height: 1; }
+        .list-price sup { font-size: 0.75rem; font-weight: 600; vertical-align: super; }
+        .list-old-price { font-size: 0.82rem; color: var(--color-gray-600); text-decoration: line-through; }
+        .list-free-badge {
+          background: #1a9aef; color: var(--color-white);
+          font-size: 0.75rem; padding: 3px 10px; border-radius: 4px; letter-spacing: -0.01em;
+        }
+
+        .list-actions { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap; }
+        .list-actions .btn { padding: 9px 20px; font-size: 0.82rem; }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 992px) {
           .grid-4 { grid-template-columns: repeat(2, 1fr); }
           .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -133,12 +195,18 @@
           .menu-toggle { display: block; }
           .nav-links {
             position: absolute; top: 80px; left: 0; right: 0; background: var(--color-white);
-            flex-direction: column; padding: 24px; gap: 24px; border-bottom: 1px solid var(--color-gray-100);
-            box-shadow: var(--shadow-sm); transform: translateY(-150%); transition: transform 0.3s ease-in-out; opacity: 0;
+            flex-direction: column; padding: 24px; gap: 24px;
+            border-bottom: 1px solid var(--color-gray-100);
+            box-shadow: var(--shadow-sm); transform: translateY(-150%);
+            transition: transform 0.3s ease-in-out; opacity: 0;
           }
           .nav-links.active { transform: translateY(0); opacity: 1; }
           .footer-grid { grid-template-columns: 1fr; }
           .hero { padding: 80px 0; }
+          .list-card { padding: 16px; gap: 16px; }
+          .list-cover { width: 105px; min-width: 105px; height: 155px; }
+          .list-title { font-size: 1rem; }
+          .list-price { font-size: 1.2rem; }
         }
         @media (max-width: 480px) {
           .grid-4 { grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -148,6 +216,12 @@
           .book-author { font-size: 0.8rem; margin-bottom: 10px; }
           .book-price { font-size: 0.9rem; }
           .btn-outline { padding: 5px 8px !important; font-size: 0.7rem !important; }
+          .list-card { padding: 12px; gap: 12px; }
+          .list-cover { width: 85px; min-width: 85px; height: 125px; }
+          .list-title { font-size: 0.88rem; }
+          .list-desc, .list-formats { display: none; }
+          .list-price { font-size: 1.05rem; }
+          .list-actions .btn { padding: 8px 14px; font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -155,14 +229,12 @@
 
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="logo">Mnyilinga Books</a>
-            
+            <a href="#" class="logo">BookStore.</a>
             <button class="menu-toggle" aria-label="Toggle menu">
                 <svg viewBox="0 0 24 24">
                     <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
                 </svg>
             </button>
-
             <ul class="nav-links">
                 <li><a href="#" class="active">Home</a></li>
                 <li><a href="#">Shop</a></li>
@@ -176,18 +248,18 @@
         <div class="container">
             <h1>Curated reads for the modern mind.</h1>
             <p>Discover our handpicked collection of fiction, business, and technology books designed to inspire and educate.</p>
-            <div style="display: flex; gap: 16px; justify-content: center; margin-top: 32px;">
+            <div style="display:flex;gap:16px;justify-content:center;margin-top:32px;">
                 <a href="#" class="btn btn-primary">Shop Collection</a>
                 <a href="#" class="btn btn-outline">Our Story</a>
             </div>
         </div>
     </header>
 
+    <!-- GRID CARDS -->
     <section class="section">
         <div class="container">
-            <h2 style="margin-bottom: 32px;">Featured Books</h2>
+            <h2 style="margin-bottom:32px;">Featured Books</h2>
             <div class="grid grid-4">
-                
                 <article class="book-card">
                     <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&q=80&w=400" alt="Book Cover" class="book-cover">
                     <div class="book-info">
@@ -196,11 +268,10 @@
                         <p class="book-author">Sarah Jenkins</p>
                         <div class="book-footer">
                             <span class="book-price">$18.99</span>
-                            <a href="#" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.75rem;">Details</a>
+                            <a href="#" class="btn btn-outline" style="padding:6px 12px;font-size:0.75rem;">Details</a>
                         </div>
                     </div>
                 </article>
-
                 <article class="book-card">
                     <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=400" alt="Book Cover" class="book-cover">
                     <div class="book-info">
@@ -209,24 +280,22 @@
                         <p class="book-author">David Chen</p>
                         <div class="book-footer">
                             <span class="book-price">$24.00</span>
-                            <a href="#" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.75rem;">Details</a>
+                            <a href="#" class="btn btn-outline" style="padding:6px 12px;font-size:0.75rem;">Details</a>
                         </div>
                     </div>
                 </article>
-
                 <article class="book-card">
                     <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&q=80&w=400" alt="Book Cover" class="book-cover">
                     <div class="book-info">
                         <span class="book-category">Technology</span>
-                        <h3 class="book-title">Code & Culture</h3>
+                        <h3 class="book-title">Code &amp; Culture</h3>
                         <p class="book-author">Elena Rostova</p>
                         <div class="book-footer">
                             <span class="book-price">$29.50</span>
-                            <a href="#" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.75rem;">Details</a>
+                            <a href="#" class="btn btn-outline" style="padding:6px 12px;font-size:0.75rem;">Details</a>
                         </div>
                     </div>
                 </article>
-
                 <article class="book-card">
                     <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=400" alt="Book Cover" class="book-cover">
                     <div class="book-info">
@@ -235,7 +304,7 @@
                         <p class="book-author">Marcus Webb</p>
                         <div class="book-footer">
                             <span class="book-price">$32.00</span>
-                            <a href="#" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.75rem;">Details</a>
+                            <a href="#" class="btn btn-outline" style="padding:6px 12px;font-size:0.75rem;">Details</a>
                         </div>
                     </div>
                 </article>
@@ -243,11 +312,157 @@
         </div>
     </section>
 
+    <!-- ======= BEST SELLERS — LIST VIEW ======= -->
     <section class="section section-bg">
-        <div class="container" style="text-align: center; max-width: 600px;">
+        <div class="container">
+
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;flex-wrap:wrap;gap:16px;">
+                <h2 style="margin-bottom:0;">Best Sellers This Week</h2>
+                <div class="list-filters">
+                    <button class="filter-btn active" onclick="filterBooks(this,'all')">All</button>
+                    <button class="filter-btn" onclick="filterBooks(this,'fiction')">Fiction</button>
+                    <button class="filter-btn" onclick="filterBooks(this,'business')">Business</button>
+                    <button class="filter-btn" onclick="filterBooks(this,'technology')">Technology</button>
+                </div>
+            </div>
+
+            <div class="list-books">
+
+                <!-- 1 -->
+                <article class="list-card" data-category="productivity">
+                    <div class="list-badge">Bestseller</div>
+                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&q=80&w=300&h=420" alt="Deep Work" class="list-cover">
+                    <div class="list-details">
+                        <span class="book-category">Productivity</span>
+                        <h3 class="list-title">Deep Work: Rules for Focused Success in a Distracted World</h3>
+                        <p class="list-author">by Cal Newport</p>
+                        <p class="list-series">Book 1 of 3 &middot; Focus Mastery Series</p>
+                        <div class="list-stars">
+                            <span class="stars">★★★★★</span>
+                            <span class="review-count">(4.8 &middot; 12.4K reviews)</span>
+                        </div>
+                        <p class="list-desc">A guide to cultivating deep focus in a distracted world. Newport argues that the ability to concentrate intensely is becoming increasingly rare and simultaneously more valuable in our knowledge economy.</p>
+                        <div class="list-formats">
+                            <span class="format-tag active-format">Hardcover</span>
+                            <span class="format-tag">Kindle</span>
+                            <span class="format-tag">Audiobook</span>
+                        </div>
+                        <div class="list-pricing">
+                            <span class="list-price">TZS 18,500<sup>00</sup></span>
+                            <span class="list-old-price">TZS 32,000.00</span>
+                        </div>
+                        <div class="list-actions">
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-outline">View Details</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 2 -->
+                <article class="list-card" data-category="self-development">
+                    <div class="list-badge" style="background:var(--color-black);">New</div>
+                    <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&q=80&w=300&h=420" alt="Atomic Habits" class="list-cover">
+                    <div class="list-details">
+                        <span class="book-category">Self-Development</span>
+                        <h3 class="list-title">Atomic Habits: Tiny Changes, Remarkable Results</h3>
+                        <p class="list-author">by James Clear</p>
+                        <p class="list-series">Standalone &middot; Self-Help</p>
+                        <div class="list-stars">
+                            <span class="stars">★★★★★</span>
+                            <span class="review-count">(4.9 &middot; 38.2K reviews)</span>
+                        </div>
+                        <p class="list-desc">An easy and proven way to build good habits and break bad ones. Clear distills the most fundamental information about habits into a practical framework you can apply every day.</p>
+                        <div class="list-formats">
+                            <span class="format-tag active-format">Hardcover</span>
+                            <span class="format-tag">Kindle</span>
+                            <span class="format-tag">Audiobook</span>
+                        </div>
+                        <div class="list-pricing">
+                            <span class="list-price">TZS 0<sup>00</sup></span>
+                            <span class="list-free-badge">kindle<strong>unlimited</strong></span>
+                        </div>
+                        <p style="font-size:0.8rem;color:var(--color-gray-600);margin:2px 0 0;">Or TZS 24,500.00 to buy</p>
+                        <div class="list-actions">
+                            <a href="#" class="btn btn-primary">Read Free</a>
+                            <a href="#" class="btn btn-outline">View Details</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 3 -->
+                <article class="list-card" data-category="business">
+                    <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&q=80&w=300&h=420" alt="Psychology of Money" class="list-cover">
+                    <div class="list-details">
+                        <span class="book-category">Finance</span>
+                        <h3 class="list-title">The Psychology of Money: Timeless Lessons on Wealth</h3>
+                        <p class="list-author">by Morgan Housel</p>
+                        <p class="list-series">Standalone &middot; Personal Finance</p>
+                        <div class="list-stars">
+                            <span class="stars">★★★★<span style="color:var(--color-gray-300)">★</span></span>
+                            <span class="review-count">(4.6 &middot; 21.7K reviews)</span>
+                        </div>
+                        <p class="list-desc">Timeless lessons on wealth, greed, and happiness. Doing well with money isn't necessarily about what you know — it's about how you behave when markets move.</p>
+                        <div class="list-formats">
+                            <span class="format-tag active-format">Paperback</span>
+                            <span class="format-tag">Kindle</span>
+                        </div>
+                        <div class="list-pricing">
+                            <span class="list-price">TZS 14,900<sup>00</sup></span>
+                            <span class="list-old-price">TZS 28,000.00</span>
+                        </div>
+                        <div class="list-actions">
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-outline">View Details</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 4 -->
+                <article class="list-card" data-category="business">
+                    <div class="list-badge" style="background:#27ae60;">Sale</div>
+                    <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&q=80&w=300&h=420" alt="Zero to One" class="list-cover">
+                    <div class="list-details">
+                        <span class="book-category">Business</span>
+                        <h3 class="list-title">Zero to One: Notes on Startups, or How to Build the Future</h3>
+                        <p class="list-author">by Peter Thiel &amp; Blake Masters</p>
+                        <p class="list-series">Standalone &middot; Entrepreneurship</p>
+                        <div class="list-stars">
+                            <span class="stars">★★★★<span style="color:var(--color-gray-300)">★</span></span>
+                            <span class="review-count">(4.5 &middot; 9.8K reviews)</span>
+                        </div>
+                        <p class="list-desc">If you want to build a better future, you must believe in secrets. The great secret of our time is that there are still uncharted frontiers to explore and new inventions to create.</p>
+                        <div class="list-formats">
+                            <span class="format-tag active-format">Hardcover</span>
+                            <span class="format-tag">Kindle</span>
+                            <span class="format-tag">Audiobook</span>
+                        </div>
+                        <div class="list-pricing">
+                            <span class="list-price">TZS 22,000<sup>00</sup></span>
+                            <span class="list-old-price">TZS 38,000.00</span>
+                        </div>
+                        <div class="list-actions">
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-outline">View Details</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <div style="text-align:center;margin-top:48px;">
+                <a href="#" class="btn btn-outline" style="padding:14px 48px;font-size:0.9rem;">View All Books &rarr;</a>
+            </div>
+
+        </div>
+    </section>
+    <!-- ========================================== -->
+
+    <!-- NEWSLETTER -->
+    <section class="section">
+        <div class="container" style="text-align:center;max-width:600px;">
             <h2>Join our newsletter</h2>
             <p>Get updates on new releases, author interviews, and exclusive discounts.</p>
-            <form style="display: flex; gap: 16px; margin-top: 32px;" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+            <form style="display:flex;gap:16px;margin-top:32px;" onsubmit="event.preventDefault();alert('Subscribed successfully!');">
                 <input type="email" placeholder="Enter your email address" required>
                 <button type="submit" class="btn btn-primary">Subscribe</button>
             </form>
@@ -258,8 +473,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <h3 class="logo" style="margin-bottom: 16px;">Mnyilinga Books</h3>
-                    <p style="max-width: 300px;">A premium destination for readers who appreciate modern design and curated knowledge.</p>
+                    <h3 class="logo" style="margin-bottom:16px;">BookStore.</h3>
+                    <p style="max-width:300px;">A premium destination for readers who appreciate modern design and curated knowledge.</p>
                 </div>
                 <div>
                     <h3>Quick Links</h3>
@@ -290,13 +505,10 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Mobile Menu Toggle
             const menuToggle = document.querySelector('.menu-toggle');
             const navLinks = document.querySelector('.nav-links');
-
             const hamburgerPath = "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z";
             const closePath = "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z";
-
             if (menuToggle && navLinks) {
                 menuToggle.addEventListener('click', () => {
                     navLinks.classList.toggle('active');
@@ -304,13 +516,17 @@
                     menuToggle.querySelector('path').setAttribute('d', isOpen ? closePath : hamburgerPath);
                 });
             }
-
-            // Update Copyright Year dynamically
             const yearSpan = document.getElementById('current-year');
-            if (yearSpan) {
-                yearSpan.textContent = new Date().getFullYear();
-            }
+            if (yearSpan) yearSpan.textContent = new Date().getFullYear();
         });
+
+        function filterBooks(btn, category) {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.list-card').forEach(card => {
+                card.style.display = (category === 'all' || card.getAttribute('data-category') === category) ? 'flex' : 'none';
+            });
+        }
     </script>
 </body>
 </html>
