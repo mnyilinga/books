@@ -773,7 +773,7 @@
         }
         .nav-links {
           position: fixed;
-          top: 72px;
+          top: 90px;
           left: 0;
           right: 0;
           background: var(--color-white);
@@ -825,7 +825,7 @@
         .nav-overlay {
           display: none;
           position: fixed;
-          inset: 72px 0 0 0;
+          inset: 90px 0 0 0;
           background: rgba(0, 0, 0, 0.35);
           z-index: 998;
           backdrop-filter: blur(2px);
@@ -1359,13 +1359,28 @@
           gap: 2px;
         }
 
-        /* Logo kubwa kwenye mobile + inachukua nafasi ili icons ziende mbali */
-        .logo {
-          flex: 1;
+        /* Navbar: rows mbili kwenye mobile */
+        .navbar .container {
+          flex-direction: column;
+          height: auto;
+          padding-top: 12px;
+          padding-bottom: 10px;
+          gap: 6px;
+          align-items: flex-start;
         }
+
+        /* Logo — row yake mwenyewe, ukubwa sawa na footer */
         .navbar-logo-img {
-          height: 50px !important;
+          height: 50px;
           width: auto;
+        }
+
+        /* Icons — upande wa kulia kabisa */
+        .nav-actions {
+          position: absolute;
+          top: 12px;
+          right: 20px;
+          gap: 2px;
         }
       }
 
