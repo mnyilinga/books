@@ -5,14 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mnyilinga Book Store</title>
 
+    <!-- SVG favicon -->
+    <link rel="icon" href="favicon-01.svg" type="image/svg+xml" />
+    <!-- PNG fallback -->
 
-
-  <!-- SVG favicon -->
-  <link rel="icon" href="favicon-01.svg" type="image/svg+xml">
-  <!-- PNG fallback -->
-
-
-    
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
@@ -24,15 +20,15 @@
         /* Rangi kuu za website */
         --color-black: #000000;
         --color-white: #ffffff;
-        --color-orange: #ff6a00;        /* Rangi ya machungwa - vitufe na highlights */
-        --color-orange-hover: #e55e00;  /* Machungwa giza - hover state */
+        --color-orange: #ff6a00; /* Rangi ya machungwa - vitufe na highlights */
+        --color-orange-hover: #e55e00; /* Machungwa giza - hover state */
 
         /* Vivuli vya kijivu */
-        --color-gray-50: #fafafa;   /* Nyeupe laini - background ya sections */
-        --color-gray-100: #f5f5f5;  /* Kijivu laini - mipaka */
-        --color-gray-300: #e0e0e0;  /* Kijivu - borders */
-        --color-gray-600: #666666;  /* Kijivu - maandishi madogo */
-        --color-gray-900: #1a1a1a;  /* Karibu nyeusi */
+        --color-gray-50: #fafafa; /* Nyeupe laini - background ya sections */
+        --color-gray-100: #f5f5f5; /* Kijivu laini - mipaka */
+        --color-gray-300: #e0e0e0; /* Kijivu - borders */
+        --color-gray-600: #666666; /* Kijivu - maandishi madogo */
+        --color-gray-900: #1a1a1a; /* Karibu nyeusi */
 
         /* Vivuli vya sanduku */
         --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -50,8 +46,8 @@
            Punguza nambari = logo ndogo
            Mfano: 36px (ndogo) | 44px (kati) | 60px (kubwa)
            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-        --logo-height: 35px;          /* Ukubwa wa logo kwenye navbar */
-        --logo-height-footer: 35px;   /* Ukubwa wa logo kwenye footer */
+        --logo-height: 35px; /* Ukubwa wa logo kwenye navbar */
+        --logo-height-footer: 35px; /* Ukubwa wa logo kwenye footer */
       }
 
       /* ══════════════════════════════════
@@ -244,12 +240,19 @@
         background: none;
         border: none;
         cursor: pointer;
-        padding: 6px;
-        border-radius: 6px;
+        padding: 8px;
+        border-radius: 8px;
         transition: background 0.2s;
       }
       .menu-toggle:hover {
         background: var(--color-gray-100);
+      }
+
+      /* Grouper ya search + hamburger icons upande wa kulia */
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 2px;
       }
       .menu-toggle svg {
         width: 24px;
@@ -280,7 +283,7 @@
       .hero-bg {
         position: absolute;
         inset: 0;
-        background-image: url('https://books.mnyilinga.co.tz/assets/images/hero3.webp');
+        background-image: url("https://books.mnyilinga.co.tz/assets/images/hero3.webp");
         background-size: cover;
         background-position: center top;
         background-repeat: no-repeat;
@@ -291,13 +294,13 @@
 
       /* Gradient overlay - kutoka juu nyeusi laini hadi chini nyeusi kabisa */
       .hero::before {
-        content: '';
+        content: "";
         position: absolute;
         inset: 0;
         background: linear-gradient(
           to bottom,
           rgba(0, 0, 0, 0.35) 0%,
-          rgba(0, 0, 0, 0.20) 40%,
+          rgba(0, 0, 0, 0.2) 40%,
           rgba(0, 0, 0, 0.55) 75%,
           rgba(0, 0, 0, 0.88) 100%
         );
@@ -313,14 +316,14 @@
       /* Maandishi ya hero - nyeupe ili yasonike vizuri */
       .hero h1 {
         color: #ffffff;
-        text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
       }
       .hero p {
         font-size: 1.1rem;
         max-width: 580px;
         margin: 0 auto 32px;
         color: rgba(255, 255, 255, 0.82);
-        text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
       }
       .hero-btns {
         display: flex;
@@ -330,13 +333,13 @@
       /* Kitufe cha outline kwa hero - nyeupe */
       .hero .btn-outline {
         color: #ffffff;
-        border-color: rgba(255,255,255,0.55);
-        background: rgba(255,255,255,0.08);
+        border-color: rgba(255, 255, 255, 0.55);
+        background: rgba(255, 255, 255, 0.08);
         backdrop-filter: blur(4px);
       }
       .hero .btn-outline:hover {
         border-color: #ffffff;
-        background: rgba(255,255,255,0.18);
+        background: rgba(255, 255, 255, 0.18);
       }
 
       /* ══════════════════════════════════
@@ -777,15 +780,15 @@
           padding: 24px 28px 28px;
           gap: 0;
           border-bottom: 1px solid var(--color-gray-100);
-          box-shadow: 0 12px 32px rgba(0,0,0,0.10);
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
           /* Imefichwa - itatoka ukibonyeza hamburger */
           transform: translateY(-8px);
           opacity: 0;
           visibility: hidden;
           pointer-events: none;
           transition:
-            transform 0.28s cubic-bezier(0.4,0,0.2,1),
-            opacity 0.28s cubic-bezier(0.4,0,0.2,1),
+            transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+            opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1),
             visibility 0.28s;
           z-index: 999;
         }
@@ -801,7 +804,9 @@
           font-size: 1rem;
           font-weight: 500;
           color: var(--color-gray-600);
-          transition: color 0.2s, padding-left 0.2s;
+          transition:
+            color 0.2s,
+            padding-left 0.2s;
         }
         .nav-links a:hover,
         .nav-links a.active {
@@ -820,7 +825,7 @@
           display: none;
           position: fixed;
           inset: 72px 0 0 0;
-          background: rgba(0,0,0,0.35);
+          background: rgba(0, 0, 0, 0.35);
           z-index: 998;
           backdrop-filter: blur(2px);
           -webkit-backdrop-filter: blur(2px);
@@ -1052,7 +1057,9 @@
         background: var(--color-black);
         border-color: var(--color-black);
       }
-      .rec-arrow:hover svg { fill: var(--color-white); }
+      .rec-arrow:hover svg {
+        fill: var(--color-white);
+      }
       .rec-arrow svg {
         width: 18px;
         height: 18px;
@@ -1060,10 +1067,16 @@
         display: block;
         transition: fill 0.2s;
       }
-      .rec-arrow-left  { left: -8px; }
-      .rec-arrow-right { right: -8px; }
+      .rec-arrow-left {
+        left: -8px;
+      }
+      .rec-arrow-right {
+        right: -8px;
+      }
       @media (min-width: 769px) {
-        .rec-arrow { display: flex; }
+        .rec-arrow {
+          display: flex;
+        }
       }
 
       /* The scrollable track */
@@ -1073,13 +1086,17 @@
         overflow-x: auto;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;        /* Firefox */
+        scrollbar-width: none; /* Firefox */
         padding-bottom: 4px;
         cursor: grab;
         user-select: none;
       }
-      .rec-track:active { cursor: grabbing; }
-      .rec-track::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+      .rec-track:active {
+        cursor: grabbing;
+      }
+      .rec-track::-webkit-scrollbar {
+        display: none;
+      } /* Chrome/Safari */
 
       /* Individual story card */
       .rec-card {
@@ -1090,7 +1107,9 @@
         gap: 0;
       }
       @media (max-width: 540px) {
-        .rec-card { flex: 0 0 180px; }
+        .rec-card {
+          flex: 0 0 180px;
+        }
       }
 
       .rec-card-img-wrap {
@@ -1138,7 +1157,9 @@
         overflow: hidden;
         flex: 1;
       }
-      .rec-card-title:hover { color: var(--color-orange); }
+      .rec-card-title:hover {
+        color: var(--color-orange);
+      }
 
       .rec-card-footer {
         display: flex;
@@ -1220,8 +1241,12 @@
         padding: 4px 2px;
         flex: 1;
       }
-      .quick-links-track:active { cursor: grabbing; }
-      .quick-links-track::-webkit-scrollbar { display: none; }
+      .quick-links-track:active {
+        cursor: grabbing;
+      }
+      .quick-links-track::-webkit-scrollbar {
+        display: none;
+      }
       .ql-btn {
         flex-shrink: 0;
         scroll-snap-align: start;
@@ -1245,8 +1270,427 @@
         border-color: var(--color-orange);
         color: var(--color-white);
         transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(255,106,0,0.25);
+        box-shadow: 0 4px 12px rgba(255, 106, 0, 0.25);
       }
+
+      /* ══════════════════════════════════
+         SEARCH TRIGGER BUTTON (Navbar)
+         Inaonekana kulia mwa nav-links
+         ══════════════════════════════════ */
+      .search-trigger {
+        display: flex;
+        align-items: center;
+        gap: 87px;
+        background: var(--color-gray-50);
+        border: 1px solid var(--color-gray-300);
+        border-radius: 8px;
+        padding: 7px 12px;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+        font-size: 0.8rem;
+        color: var(--color-gray-600);
+        transition: var(--transition);
+        white-space: nowrap;
+        margin-left: 140px;
+        
+
+
+
+
+
+      }
+      .search-trigger:hover {
+        border-color: var(--color-orange);
+        color: var(--color-orange);
+        background: var(--color-white);
+        box-shadow: 0 2px 8px rgba(255, 106, 0, 0.12);
+      }
+      .search-trigger svg {
+        width: 15px;
+        height: 15px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
+      }
+      .search-trigger-kbd {
+        display: inline-flex;
+        align-items: center;
+        gap: 2px;
+        font-size: 0.68rem;
+        color: var(--color-gray-600);
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-300);
+        border-radius: 4px;
+        padding: 1px 5px;
+        font-family: inherit;
+        line-height: 1.6;
+        opacity: 0.8;
+      }
+      /* Simu — ficha shortcut label, onyesha icon peke yake */
+      @media (max-width: 768px) {
+        .search-trigger-label {
+          display: none;
+        }
+        .search-trigger-kbd {
+          display: none;
+        }
+        .search-trigger {
+          padding: 8px 10px;
+          border-radius: 8px;
+          background: transparent;
+          border: none;
+        }
+        .search-trigger:hover {
+          background: var(--color-gray-100);
+        }
+        .menu-toggle {
+          padding: 8px 10px;
+          border-radius: 8px;
+          background: transparent;
+        }
+        .menu-toggle:hover {
+          background: var(--color-gray-100);
+        }
+        .nav-actions {
+          gap: 2px;
+        }
+      }
+
+      /* ══════════════════════════════════
+         SEARCH OVERLAY (Command Palette)
+         ══════════════════════════════════ */
+      .search-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 80px;
+        padding-left: 16px;
+        padding-right: 16px;
+        background: rgba(0, 0, 0, 0.55);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition:
+          opacity 0.22s ease,
+          visibility 0.22s ease;
+      }
+      .search-overlay.open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      /* The white panel */
+      .search-panel {
+        width: 100%;
+        max-width: 620px;
+        background: var(--color-white);
+        border-radius: 14px;
+        box-shadow:
+          0 0 0 1px rgba(0, 0, 0, 0.08),
+          0 24px 64px rgba(0, 0, 0, 0.22),
+          0 8px 24px rgba(0, 0, 0, 0.12);
+        overflow: hidden;
+        transform: translateY(-12px) scale(0.98);
+        transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .search-overlay.open .search-panel {
+        transform: translateY(0) scale(1);
+      }
+
+      /* Input row */
+      .search-input-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 18px;
+        border-bottom: 1px solid var(--color-gray-100);
+      }
+      .search-input-row svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: var(--color-gray-600);
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
+        transition: stroke 0.2s;
+      }
+      .search-input-row:focus-within svg {
+        stroke: var(--color-orange);
+      }
+      #searchInput {
+        flex: 1;
+        border: none;
+        background: transparent;
+        font-size: 1rem;
+        font-family: "Inter", sans-serif;
+        color: var(--color-black);
+        padding: 0;
+        outline: none;
+        width: 100%;
+      }
+      #searchInput::placeholder {
+        color: var(--color-gray-600);
+        font-weight: 400;
+      }
+      .search-esc-btn {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        font-size: 0.72rem;
+        color: var(--color-gray-600);
+        background: var(--color-gray-50);
+        border: 1px solid var(--color-gray-300);
+        border-radius: 5px;
+        padding: 3px 8px;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+        transition: var(--transition);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .search-esc-btn:hover {
+        border-color: var(--color-gray-600);
+        color: var(--color-black);
+      }
+
+      /* Results list */
+      .search-results {
+        max-height: 420px;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: var(--color-gray-300) transparent;
+      }
+      .search-results::-webkit-scrollbar {
+        width: 4px;
+      }
+      .search-results::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .search-results::-webkit-scrollbar-thumb {
+        background: var(--color-gray-300);
+        border-radius: 4px;
+      }
+
+      /* Group heading inside results */
+      .search-group-label {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--color-gray-600);
+        padding: 12px 18px 6px;
+      }
+
+      /* Individual result item */
+      .search-result-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 10px 18px;
+        cursor: pointer;
+        transition: background 0.15s;
+        border-left: 3px solid transparent;
+        text-decoration: none;
+      }
+      .search-result-item:hover,
+      .search-result-item.focused {
+        background: var(--color-gray-50);
+        border-left-color: var(--color-orange);
+      }
+      .search-result-thumb {
+        width: 40px;
+        height: 54px;
+        object-fit: cover;
+        border-radius: 4px;
+        flex-shrink: 0;
+        background: var(--color-gray-100);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      }
+      .search-result-thumb-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: var(--color-gray-100);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .search-result-thumb-icon svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: var(--color-gray-600);
+        stroke-width: 1.8;
+        stroke-linecap: round;
+      }
+      .search-result-info {
+        flex: 1;
+        min-width: 0;
+      }
+      .search-result-title {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--color-black);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.3;
+      }
+      .search-result-title mark {
+        background: rgba(255, 106, 0, 0.18);
+        color: var(--color-orange);
+        border-radius: 2px;
+        font-weight: 700;
+        padding: 0 1px;
+      }
+      .search-result-meta {
+        font-size: 0.76rem;
+        color: var(--color-gray-600);
+        margin-top: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .search-result-badge {
+        font-size: 0.65rem;
+        font-weight: 600;
+        padding: 2px 8px;
+        border-radius: 20px;
+        flex-shrink: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .badge-book {
+        background: rgba(255, 106, 0, 0.1);
+        color: var(--color-orange);
+      }
+      .badge-story {
+        background: rgba(0, 0, 0, 0.07);
+        color: var(--color-gray-900);
+      }
+      .badge-page {
+        background: rgba(39, 174, 96, 0.12);
+        color: #27ae60;
+      }
+
+
+
+
+
+      /* Enter arrow hint */
+      .search-result-enter {
+        flex-shrink: 0;
+        opacity: 0;
+        transition: opacity 0.15s;
+
+
+      }
+      .search-result-item:hover .search-result-enter,
+      .search-result-item.focused .search-result-enter {
+        opacity: 1;
+      }
+      .search-result-enter svg {
+        width: 14px;
+        height: 14px;
+        fill: none;
+        stroke: var(--color-gray-600);
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* Empty state */
+      .search-empty {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 24px;
+        gap: 10px;
+      }
+      .search-empty svg {
+        width: 40px;
+        height: 40px;
+        fill: none;
+        stroke: var(--color-gray-300);
+        stroke-width: 1.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .search-empty p {
+        font-size: 0.88rem;
+        color: var(--color-gray-600);
+        text-align: center;
+        margin: 0;
+      }
+      .search-empty strong {
+        color: var(--color-black);
+      }
+
+      /* Footer bar inside panel */
+      .search-footer-bar {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 10px 18px;
+        border-top: 1px solid var(--color-gray-100);
+        background: var(--color-gray-50);
+      }
+      .search-hint {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 0.7rem;
+        color: var(--color-gray-600);
+      }
+      .search-hint kbd {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-300);
+        border-radius: 4px;
+        padding: 1px 5px;
+        font-size: 0.65rem;
+        font-family: inherit;
+        color: var(--color-gray-600);
+        min-width: 20px;
+        line-height: 1.6;
+      }
+      @media (max-width: 540px) {
+        .search-overlay {
+          padding-top: 16px;
+          align-items: flex-start;
+        }
+        .search-footer-bar {
+          display: none;
+        }
+        .search-hint {
+          display: none;
+        }
+      }
+
+
+
+
+
+
+
+
+
+
+
     </style>
   </head>
   <body>
@@ -1258,13 +1702,48 @@
     <nav class="navbar">
       <div class="container">
         <a href="#" class="logo">
-          <img src="https://books.mnyilinga.co.tz/assets/images/main-logo-01.svg" alt="Mnyilinga Books" style="height: var(--logo-height); width: auto; display: block;" />
+          <img
+            src="https://books.mnyilinga.co.tz/assets/images/main-logo-01.svg"
+            alt="Mnyilinga Books"
+            style="height: var(--logo-height); width: auto; display: block"
+          />
         </a>
-        <button class="menu-toggle" aria-label="Toggle menu">
-          <svg viewBox="0 0 24 24">
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-          </svg>
-        </button>
+
+
+
+
+
+        <!-- SEARCH TRIGGER + HAMBURGER GROUP -->
+        <div class="nav-actions">
+          <button
+            class="search-trigger"
+            id="searchTrigger"
+            aria-label="Search"
+            aria-haspopup="dialog"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" />
+              <line x1="16.5" y1="16.5" x2="22" y2="22" />
+            </svg>
+            <span class="search-trigger-label">Search books&hellip;</span>
+            <span class="search-trigger-kbd">
+              <kbd>&#8984;</kbd><kbd>K</kbd>
+            </span>
+          </button>
+
+
+
+
+
+
+
+
+          <button class="menu-toggle" aria-label="Toggle menu">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+            </svg>
+          </button>
+        </div>
         <ul class="nav-links">
           <li><a href="#" class="active">Home</a></li>
           <li><a href="#">Shop</a></li>
@@ -1273,8 +1752,49 @@
         </ul>
       </div>
     </nav>
-    <!-- Overlay ya giza inayofunika ukurasa wakati menyu ya simu iko wazi -->
     <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- COMMAND PALETTE SEARCH OVERLAY -->
+    <div
+      class="search-overlay"
+      id="searchOverlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Search"
+    >
+      <div class="search-panel" id="searchPanel">
+        <div class="search-input-row">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <line x1="16.5" y1="16.5" x2="22" y2="22" />
+          </svg>
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search books, authors, categories&hellip;"
+            autocomplete="off"
+            spellcheck="false"
+            aria-autocomplete="list"
+            aria-controls="searchResults"
+          />
+          <button
+            class="search-esc-btn"
+            id="searchClose"
+            aria-label="Close search"
+          >
+            esc
+          </button>
+        </div>
+        <div class="search-results" id="searchResults" role="listbox"></div>
+        <div class="search-footer-bar">
+          <span class="search-hint"
+            ><kbd>&uarr;</kbd><kbd>&darr;</kbd> navigate</span
+          >
+          <span class="search-hint"><kbd>&crarr;</kbd> open</span>
+          <span class="search-hint"><kbd>esc</kbd> close</span>
+        </div>
+      </div>
+    </div>
 
     <!-- ═══════════════════════════════════════════════
          SEHEMU YA KWANZA (Hero)
@@ -1601,36 +2121,63 @@
          ═══════════════════════════════════════════════ -->
     <section class="rec-stories">
       <div class="container">
-
         <div class="rec-stories-header">
           <span class="rec-stories-title">
             Recommended Stories
-            <svg viewBox="0 0 24 24"><path d="M8 5l7 7-7 7"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M8 5l7 7-7 7" /></svg>
           </span>
         </div>
 
         <!-- Track wrapper + arrows -->
-        <div class="rec-track-wrap" style="position:relative">
+        <div class="rec-track-wrap" style="position: relative">
           <button class="rec-arrow rec-arrow-left" aria-label="Scroll left">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+            >
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
           </button>
           <button class="rec-arrow rec-arrow-right" aria-label="Scroll right">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+            >
+              <path d="M9 18l6-6-6-6" />
+            </svg>
           </button>
 
           <div class="rec-track" id="recTrack">
-
             <!-- Card 1 -->
             <article class="rec-card">
               <a href="#" class="rec-card-img-wrap">
-                <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=440&q=80" alt="Books and reading" loading="lazy"/>
+                <img
+                  src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=440&q=80"
+                  alt="Books and reading"
+                  loading="lazy"
+                />
               </a>
               <div class="rec-card-body">
                 <span class="rec-card-category">Books</span>
-                <a href="#" class="rec-card-title">The 10 most influential books every entrepreneur should read this year</a>
+                <a href="#" class="rec-card-title"
+                  >The 10 most influential books every entrepreneur should read
+                  this year</a
+                >
                 <div class="rec-card-footer">
-                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
-                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  <button
+                    class="rec-save-btn"
+                    onclick="toggleSave(this)"
+                    aria-label="Save story"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                      />
+                    </svg>
                     Save
                   </button>
                   <span class="rec-read-time">8 mins</span>
@@ -1641,14 +2188,29 @@
             <!-- Card 2 -->
             <article class="rec-card">
               <a href="#" class="rec-card-img-wrap">
-                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=440&q=80" alt="Business mindset" loading="lazy"/>
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=440&q=80"
+                  alt="Business mindset"
+                  loading="lazy"
+                />
               </a>
               <div class="rec-card-body">
                 <span class="rec-card-category">Business</span>
-                <a href="#" class="rec-card-title">How reading daily for 30 minutes transformed this CEO's decision-making</a>
+                <a href="#" class="rec-card-title"
+                  >How reading daily for 30 minutes transformed this CEO's
+                  decision-making</a
+                >
                 <div class="rec-card-footer">
-                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
-                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  <button
+                    class="rec-save-btn"
+                    onclick="toggleSave(this)"
+                    aria-label="Save story"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                      />
+                    </svg>
                     Save
                   </button>
                   <span class="rec-read-time">12 mins</span>
@@ -1659,14 +2221,29 @@
             <!-- Card 3 -->
             <article class="rec-card">
               <a href="#" class="rec-card-img-wrap">
-                <img src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=440&q=80" alt="Writing desk" loading="lazy"/>
+                <img
+                  src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=440&q=80"
+                  alt="Writing desk"
+                  loading="lazy"
+                />
               </a>
               <div class="rec-card-body">
                 <span class="rec-card-category">Self-Dev</span>
-                <a href="#" class="rec-card-title">Why fiction readers develop stronger empathy and social intelligence</a>
+                <a href="#" class="rec-card-title"
+                  >Why fiction readers develop stronger empathy and social
+                  intelligence</a
+                >
                 <div class="rec-card-footer">
-                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
-                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  <button
+                    class="rec-save-btn"
+                    onclick="toggleSave(this)"
+                    aria-label="Save story"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                      />
+                    </svg>
                     Save
                   </button>
                   <span class="rec-read-time">6 mins</span>
@@ -1677,14 +2254,29 @@
             <!-- Card 4 -->
             <article class="rec-card">
               <a href="#" class="rec-card-img-wrap">
-                <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=440&q=80" alt="Stack of books" loading="lazy"/>
+                <img
+                  src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=440&q=80"
+                  alt="Stack of books"
+                  loading="lazy"
+                />
               </a>
               <div class="rec-card-body">
                 <span class="rec-card-category">Productivity</span>
-                <a href="#" class="rec-card-title">The science of speed-reading: myths, facts, and what actually works</a>
+                <a href="#" class="rec-card-title"
+                  >The science of speed-reading: myths, facts, and what actually
+                  works</a
+                >
                 <div class="rec-card-footer">
-                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
-                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  <button
+                    class="rec-save-btn"
+                    onclick="toggleSave(this)"
+                    aria-label="Save story"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                      />
+                    </svg>
                     Save
                   </button>
                   <span class="rec-read-time">9 mins</span>
@@ -1695,14 +2287,29 @@
             <!-- Card 5 -->
             <article class="rec-card">
               <a href="#" class="rec-card-img-wrap">
-                <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=440&q=80" alt="Library" loading="lazy"/>
+                <img
+                  src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=440&q=80"
+                  alt="Library"
+                  loading="lazy"
+                />
               </a>
               <div class="rec-card-body">
                 <span class="rec-card-category">Culture</span>
-                <a href="#" class="rec-card-title">Inside Tanzania's growing literary scene: local authors changing the narrative</a>
+                <a href="#" class="rec-card-title"
+                  >Inside Tanzania's growing literary scene: local authors
+                  changing the narrative</a
+                >
                 <div class="rec-card-footer">
-                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
-                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  <button
+                    class="rec-save-btn"
+                    onclick="toggleSave(this)"
+                    aria-label="Save story"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                      />
+                    </svg>
                     Save
                   </button>
                   <span class="rec-read-time">14 mins</span>
@@ -1713,14 +2320,29 @@
             <!-- Card 6 -->
             <article class="rec-card">
               <a href="#" class="rec-card-img-wrap">
-                <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=440&q=80" alt="Open book" loading="lazy"/>
+                <img
+                  src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=440&q=80"
+                  alt="Open book"
+                  loading="lazy"
+                />
               </a>
               <div class="rec-card-body">
                 <span class="rec-card-category">Technology</span>
-                <a href="#" class="rec-card-title">From page to pixel: how e-books are reshaping reading habits across Africa</a>
+                <a href="#" class="rec-card-title"
+                  >From page to pixel: how e-books are reshaping reading habits
+                  across Africa</a
+                >
                 <div class="rec-card-footer">
-                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
-                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  <button
+                    class="rec-save-btn"
+                    onclick="toggleSave(this)"
+                    aria-label="Save story"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                      />
+                    </svg>
                     Save
                   </button>
                   <span class="rec-read-time">11 mins</span>
@@ -1731,14 +2353,29 @@
             <!-- Card 7 -->
             <article class="rec-card">
               <a href="#" class="rec-card-img-wrap">
-                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=440&q=80" alt="Bookshelf" loading="lazy"/>
+                <img
+                  src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=440&q=80"
+                  alt="Bookshelf"
+                  loading="lazy"
+                />
               </a>
               <div class="rec-card-body">
                 <span class="rec-card-category">Wellness</span>
-                <a href="#" class="rec-card-title">Bibliotherapy: how the right book at the right time can improve mental health</a>
+                <a href="#" class="rec-card-title"
+                  >Bibliotherapy: how the right book at the right time can
+                  improve mental health</a
+                >
                 <div class="rec-card-footer">
-                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
-                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  <button
+                    class="rec-save-btn"
+                    onclick="toggleSave(this)"
+                    aria-label="Save story"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                      />
+                    </svg>
                     Save
                   </button>
                   <span class="rec-read-time">7 mins</span>
@@ -1749,14 +2386,29 @@
             <!-- Card 8 -->
             <article class="rec-card">
               <a href="#" class="rec-card-img-wrap">
-                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=440&q=80" alt="Night reading" loading="lazy"/>
+                <img
+                  src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=440&q=80"
+                  alt="Night reading"
+                  loading="lazy"
+                />
               </a>
               <div class="rec-card-body">
                 <span class="rec-card-category">Lifestyle</span>
-                <a href="#" class="rec-card-title">Night owl or early bird? When is the best time to read for deep retention</a>
+                <a href="#" class="rec-card-title"
+                  >Night owl or early bird? When is the best time to read for
+                  deep retention</a
+                >
                 <div class="rec-card-footer">
-                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
-                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  <button
+                    class="rec-save-btn"
+                    onclick="toggleSave(this)"
+                    aria-label="Save story"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                      />
+                    </svg>
                     Save
                   </button>
                   <span class="rec-read-time">5 mins</span>
@@ -1767,14 +2419,29 @@
             <!-- Card 9 -->
             <article class="rec-card">
               <a href="#" class="rec-card-img-wrap">
-                <img src="https://images.unsplash.com/photo-1610484826967-09c5720778c7?auto=format&fit=crop&w=440&q=80" alt="Children books" loading="lazy"/>
+                <img
+                  src="https://images.unsplash.com/photo-1610484826967-09c5720778c7?auto=format&fit=crop&w=440&q=80"
+                  alt="Children books"
+                  loading="lazy"
+                />
               </a>
               <div class="rec-card-body">
                 <span class="rec-card-category">Parenting</span>
-                <a href="#" class="rec-card-title">Raising readers: the proven strategies that instil a lifelong love of books in children</a>
+                <a href="#" class="rec-card-title"
+                  >Raising readers: the proven strategies that instil a lifelong
+                  love of books in children</a
+                >
                 <div class="rec-card-footer">
-                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
-                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  <button
+                    class="rec-save-btn"
+                    onclick="toggleSave(this)"
+                    aria-label="Save story"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                      />
+                    </svg>
                     Save
                   </button>
                   <span class="rec-read-time">10 mins</span>
@@ -1785,25 +2452,41 @@
             <!-- Card 10 -->
             <article class="rec-card">
               <a href="#" class="rec-card-img-wrap">
-                <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=440&q=80" alt="Reading coffee" loading="lazy"/>
+                <img
+                  src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=440&q=80"
+                  alt="Reading coffee"
+                  loading="lazy"
+                />
               </a>
               <div class="rec-card-body">
                 <span class="rec-card-category">Finance</span>
-                <a href="#" class="rec-card-title">The 5 money books that Tanzanian investors swear by for building lasting wealth</a>
+                <a href="#" class="rec-card-title"
+                  >The 5 money books that Tanzanian investors swear by for
+                  building lasting wealth</a
+                >
                 <div class="rec-card-footer">
-                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
-                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                  <button
+                    class="rec-save-btn"
+                    onclick="toggleSave(this)"
+                    aria-label="Save story"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path
+                        d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"
+                      />
+                    </svg>
                     Save
                   </button>
                   <span class="rec-read-time">13 mins</span>
                 </div>
               </div>
             </article>
-
-          </div><!-- /rec-track -->
-        </div><!-- /rec-track-wrap -->
-
-      </div><!-- /container -->
+          </div>
+          <!-- /rec-track -->
+        </div>
+        <!-- /rec-track-wrap -->
+      </div>
+      <!-- /container -->
     </section>
 
     <!-- ═══════════════════════════════════════════════
@@ -1814,7 +2497,6 @@
         <div class="quick-links-inner">
           <span class="quick-links-label">Quick Links</span>
           <div class="quick-links-track" id="qlTrack">
-
             <a href="#" class="ql-btn">Jinsi ya kumridhisha mke wako</a>
             <a href="#" class="ql-btn">Vitabu vipya 2025</a>
             <a href="#" class="ql-btn">Usimamizi wa fedha</a>
@@ -1830,8 +2512,8 @@
             <a href="#" class="ql-btn">Vitabu vya historia</a>
             <a href="#" class="ql-btn">Kupikia na lishe bora</a>
             <a href="#" class="ql-btn">Teknolojia na AI</a>
-
-          </div><!-- /ql-track -->
+          </div>
+          <!-- /ql-track -->
         </div>
       </div>
     </div>
@@ -1877,8 +2559,16 @@
       <div class="container">
         <div class="footer-grid">
           <div>
-            <div style="margin-bottom: 14px;">
-              <img src="https://books.mnyilinga.co.tz/assets/images/main-logo-01.svg" alt="Mnyilinga Books" style="height: var(--logo-height-footer); width: auto; filter: brightness(0) invert(1);" />
+            <div style="margin-bottom: 14px">
+              <img
+                src="https://books.mnyilinga.co.tz/assets/images/main-logo-01.svg"
+                alt="Mnyilinga Books"
+                style="
+                  height: var(--logo-height-footer);
+                  width: auto;
+                  filter: brightness(0) invert(1);
+                "
+              />
             </div>
             <p style="max-width: 280px; line-height: 1.7">
               A premium destination for readers who appreciate modern design and
@@ -2039,22 +2729,30 @@
 
         /* Arrow scroll */
         const SCROLL_AMT = 460;
-        document.querySelector(".rec-arrow-left").addEventListener("click", () => {
-          track.scrollBy({ left: -SCROLL_AMT, behavior: "smooth" });
-        });
-        document.querySelector(".rec-arrow-right").addEventListener("click", () => {
-          track.scrollBy({ left: SCROLL_AMT, behavior: "smooth" });
-        });
+        document
+          .querySelector(".rec-arrow-left")
+          .addEventListener("click", () => {
+            track.scrollBy({ left: -SCROLL_AMT, behavior: "smooth" });
+          });
+        document
+          .querySelector(".rec-arrow-right")
+          .addEventListener("click", () => {
+            track.scrollBy({ left: SCROLL_AMT, behavior: "smooth" });
+          });
 
         /* Mouse drag scroll */
-        let isDragging = false, startX, scrollLeft;
+        let isDragging = false,
+          startX,
+          scrollLeft;
         track.addEventListener("mousedown", (e) => {
           isDragging = true;
           startX = e.pageX - track.offsetLeft;
           scrollLeft = track.scrollLeft;
           track.style.scrollSnapType = "none";
         });
-        track.addEventListener("mouseleave", () => { isDragging = false; });
+        track.addEventListener("mouseleave", () => {
+          isDragging = false;
+        });
         track.addEventListener("mouseup", () => {
           isDragging = false;
           track.style.scrollSnapType = "x mandatory";
@@ -2071,7 +2769,10 @@
       function toggleSave(btn) {
         btn.classList.toggle("saved");
         const isSaved = btn.classList.contains("saved");
-        btn.querySelector("text, span") || (btn.childNodes[btn.childNodes.length - 1].textContent = isSaved ? " Saved" : " Save");
+        btn.querySelector("text, span") ||
+          (btn.childNodes[btn.childNodes.length - 1].textContent = isSaved
+            ? " Saved"
+            : " Save");
         /* Update text node */
         for (let node of btn.childNodes) {
           if (node.nodeType === 3 && node.textContent.trim()) {
@@ -2085,29 +2786,381 @@
       (function () {
         const ql = document.getElementById("qlTrack");
         if (!ql) return;
-        let down = false, sx, sl;
-        ql.addEventListener("mousedown", e => { down=true; sx=e.pageX-ql.offsetLeft; sl=ql.scrollLeft; ql.style.scrollSnapType="none"; });
-        ql.addEventListener("mouseleave", () => down=false);
-        ql.addEventListener("mouseup", () => { down=false; ql.style.scrollSnapType="x mandatory"; });
-        ql.addEventListener("mousemove", e => { if(!down) return; e.preventDefault(); ql.scrollLeft = sl-(e.pageX-ql.offsetLeft-sx)*1.4; });
+        let down = false,
+          sx,
+          sl;
+        ql.addEventListener("mousedown", (e) => {
+          down = true;
+          sx = e.pageX - ql.offsetLeft;
+          sl = ql.scrollLeft;
+          ql.style.scrollSnapType = "none";
+        });
+        ql.addEventListener("mouseleave", () => (down = false));
+        ql.addEventListener("mouseup", () => {
+          down = false;
+          ql.style.scrollSnapType = "x mandatory";
+        });
+        ql.addEventListener("mousemove", (e) => {
+          if (!down) return;
+          e.preventDefault();
+          ql.scrollLeft = sl - (e.pageX - ql.offsetLeft - sx) * 1.4;
+        });
       })();
 
       /* ── KICHUJIO CHA VITABU (Book Filter) ──
          Inachuja vitabu kulingana na aina iliyochaguliwa
          cat = aina ya kitabu (productivity, self-dev, business, all) */
       function filterBooks(btn, cat) {
-        /* Ondoa "active" kutoka vitufe vyote */
         document
           .querySelectorAll(".filter-btn")
           .forEach((b) => b.classList.remove("active"));
-        /* Weka "active" kwenye kitufe kilichobonyezwa */
         btn.classList.add("active");
-        /* Onyesha/ficha kadi za vitabu kulingana na aina */
         document.querySelectorAll(".list-card").forEach((card) => {
           card.style.display =
             cat === "all" || card.dataset.category === cat ? "flex" : "none";
         });
       }
+
+      /* ══════════════════════════════════════════════════
+         COMMAND PALETTE SEARCH
+         - Inachuja vitabu, stories kwa live typing
+         - Keyboard navigation (↑↓ Enter Escape)
+         - Shortcut: Ctrl+K / Cmd+K
+         ══════════════════════════════════════════════════ */
+      (function () {
+        /* ── 1. Build search index from DOM ── */
+        function buildIndex() {
+          const items = [];
+
+          /* Featured book cards */
+          document.querySelectorAll(".book-card").forEach(function (card) {
+            var img = card.querySelector(".book-cover");
+            var title = card.querySelector(".book-title");
+            var author = card.querySelector(".book-author");
+            var cat = card.querySelector(".book-category");
+            var price = card.querySelector(".book-price");
+            if (!title) return;
+            items.push({
+              type: "book",
+              title: title.textContent.trim(),
+              meta:
+                (author ? author.textContent.trim() : "") +
+                (cat ? " · " + cat.textContent.trim() : "") +
+                (price ? " · " + price.textContent.trim() : ""),
+              thumb: img ? img.src : null,
+              href: "#",
+            });
+          });
+
+          /* Bestseller list cards */
+          document.querySelectorAll(".list-card").forEach(function (card) {
+            var img = card.querySelector(".list-cover");
+            var title = card.querySelector(".list-title");
+            var author = card.querySelector(".list-author");
+            var cat = card.querySelector(".book-category");
+            var price = card.querySelector(".list-price");
+            if (!title) return;
+            items.push({
+              type: "book",
+              title: title.textContent.trim(),
+              meta:
+                (author ? author.textContent.trim() : "") +
+                (cat ? " · " + cat.textContent.trim() : "") +
+                (price ? " · " + price.textContent.trim() : ""),
+              thumb: img ? img.src : null,
+              href: "#",
+            });
+          });
+
+          /* Recommended story cards */
+          document.querySelectorAll(".rec-card").forEach(function (card) {
+            var img = card.querySelector(".rec-card-img-wrap img");
+            var title = card.querySelector(".rec-card-title");
+            var cat = card.querySelector(".rec-card-category");
+            if (!title) return;
+            items.push({
+              type: "story",
+              title: title.textContent.trim(),
+              meta: cat ? cat.textContent.trim() : "Story",
+              thumb: img ? img.src : null,
+              href: "#",
+            });
+          });
+
+          /* Static site pages */
+          [
+            { title: "Home", meta: "Page", href: "#" },
+            { title: "Shop", meta: "Page", href: "#" },
+            { title: "About", meta: "Page · About Mnyilinga", href: "#" },
+            { title: "Contact", meta: "Page", href: "#" },
+          ].forEach(function (p) {
+            items.push({
+              type: "page",
+              title: p.title,
+              meta: p.meta,
+              thumb: null,
+              href: p.href,
+            });
+          });
+
+          return items;
+        }
+
+        /* ── 2. Highlight matched portion of text ── */
+        function highlight(text, query) {
+          if (!query) return escHtml(text);
+          var escaped = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+          return escHtml(text).replace(
+            new RegExp("(" + escaped + ")", "gi"),
+            "<mark>$1</mark>",
+          );
+        }
+        function escHtml(str) {
+          return str
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        }
+
+        /* ── 3. Render results ── */
+        function renderResults(query, container, index) {
+          var q = query.trim().toLowerCase();
+
+          if (!q) {
+            /* Show default state — popular suggestions */
+            container.innerHTML =
+              "<div class='search-group-label'>Popular</div>" +
+              index
+                .filter(function (it) {
+                  return it.type === "book";
+                })
+                .slice(0, 5)
+                .map(function (it) {
+                  return buildItem(it, "");
+                })
+                .join("");
+            attachItemListeners(container);
+            return;
+          }
+
+          /* Filter */
+          var results = index.filter(function (it) {
+            return (
+              it.title.toLowerCase().includes(q) ||
+              it.meta.toLowerCase().includes(q)
+            );
+          });
+
+          if (!results.length) {
+            container.innerHTML =
+              "<div class='search-empty'>" +
+              "<svg viewBox='0 0 24 24'><circle cx='11' cy='11' r='7'/><line x1='16.5' y1='16.5' x2='22' y2='22'/></svg>" +
+              '<p>No results for <strong>"' +
+              escHtml(query.trim()) +
+              '"</strong></p>' +
+              "<p>Try a different title, author, or category.</p>" +
+              "</div>";
+            return;
+          }
+
+          /* Group by type */
+          var groups = { book: [], story: [], page: [] };
+          results.forEach(function (it) {
+            if (groups[it.type]) groups[it.type].push(it);
+          });
+          var labels = { book: "Books", story: "Stories", page: "Pages" };
+          var html = "";
+          ["book", "story", "page"].forEach(function (type) {
+            if (!groups[type].length) return;
+            html +=
+              "<div class='search-group-label'>" +
+              labels[type] +
+              " (" +
+              groups[type].length +
+              ")</div>";
+            html += groups[type]
+              .slice(0, 6)
+              .map(function (it) {
+                return buildItem(it, q);
+              })
+              .join("");
+          });
+          container.innerHTML = html;
+          attachItemListeners(container);
+        }
+
+        function buildItem(item, q) {
+          var thumbHtml;
+          if (item.thumb) {
+            thumbHtml =
+              "<img class='search-result-thumb' src='" +
+              item.thumb +
+              "' alt='' loading='lazy'/>";
+          } else {
+            thumbHtml =
+              "<div class='search-result-thumb-icon'>" +
+              "<svg viewBox='0 0 24 24'><rect x='4' y='2' width='12' height='20' rx='2'/><line x1='8' y1='7' x2='14' y2='7'/><line x1='8' y1='11' x2='14' y2='11'/><line x1='8' y1='15' x2='12' y2='15'/></svg>" +
+              "</div>";
+          }
+          var badgeClass =
+            item.type === "book"
+              ? "badge-book"
+              : item.type === "story"
+                ? "badge-story"
+                : "badge-page";
+          var badgeLabel =
+            item.type === "book"
+              ? "Book"
+              : item.type === "story"
+                ? "Story"
+                : "Page";
+          return (
+            "<a class='search-result-item' href='" +
+            item.href +
+            "' role='option'>" +
+            thumbHtml +
+            "<div class='search-result-info'>" +
+            "<div class='search-result-title'>" +
+            highlight(item.title, q) +
+            "</div>" +
+            "<div class='search-result-meta'>" +
+            escHtml(item.meta) +
+            "</div>" +
+            "</div>" +
+            "<span class='search-result-badge " +
+            badgeClass +
+            "'>" +
+            badgeLabel +
+            "</span>" +
+            "<span class='search-result-enter'>" +
+            "<svg viewBox='0 0 24 24'><polyline points='9 10 4 15 9 20'/><path d='M20 4v7a4 4 0 0 1-4 4H4'/></svg>" +
+            "</span>" +
+            "</a>"
+          );
+        }
+
+        function attachItemListeners(container) {
+          container
+            .querySelectorAll(".search-result-item")
+            .forEach(function (el) {
+              el.addEventListener("mouseenter", function () {
+                setFocus(el);
+              });
+            });
+        }
+
+        /* ── 4. Keyboard navigation ── */
+        var focusedIndex = -1;
+        function getFocusableItems(container) {
+          return Array.from(container.querySelectorAll(".search-result-item"));
+        }
+        function setFocus(el) {
+          var items = getFocusableItems(resultsEl);
+          items.forEach(function (i) {
+            i.classList.remove("focused");
+          });
+          if (el) {
+            el.classList.add("focused");
+            focusedIndex = items.indexOf(el);
+            el.scrollIntoView({ block: "nearest" });
+          } else {
+            focusedIndex = -1;
+          }
+        }
+        function moveFocus(dir) {
+          var items = getFocusableItems(resultsEl);
+          if (!items.length) return;
+          focusedIndex = (focusedIndex + dir + items.length) % items.length;
+          setFocus(items[focusedIndex]);
+        }
+
+        /* ── 5. Open / Close overlay ── */
+        var overlay = document.getElementById("searchOverlay");
+        var inputEl = document.getElementById("searchInput");
+        var resultsEl = document.getElementById("searchResults");
+        var trigger = document.getElementById("searchTrigger");
+        var closeBtn = document.getElementById("searchClose");
+        var searchIndex = null;
+        var debounceTimer = null;
+
+        function openSearch() {
+          if (!searchIndex) searchIndex = buildIndex();
+          overlay.classList.add("open");
+          document.body.style.overflow = "hidden";
+          setTimeout(function () {
+            inputEl.focus();
+          }, 50);
+          renderResults("", resultsEl, searchIndex);
+          focusedIndex = -1;
+        }
+
+        function closeSearch() {
+          overlay.classList.remove("open");
+          document.body.style.overflow = "";
+          inputEl.value = "";
+          resultsEl.innerHTML = "";
+          focusedIndex = -1;
+        }
+
+        /* ── 6. Event listeners ── */
+        trigger.addEventListener("click", openSearch);
+        closeBtn.addEventListener("click", closeSearch);
+
+        /* Click outside panel → close */
+        overlay.addEventListener("click", function (e) {
+          if (!document.getElementById("searchPanel").contains(e.target))
+            closeSearch();
+        });
+
+        /* Keyboard shortcuts */
+        document.addEventListener("keydown", function (e) {
+          /* Ctrl+K or Cmd+K → open */
+          if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+            e.preventDefault();
+            overlay.classList.contains("open") ? closeSearch() : openSearch();
+            return;
+          }
+          if (!overlay.classList.contains("open")) return;
+
+          if (e.key === "Escape") {
+            closeSearch();
+            return;
+          }
+          if (e.key === "ArrowDown") {
+            e.preventDefault();
+            moveFocus(1);
+            return;
+          }
+          if (e.key === "ArrowUp") {
+            e.preventDefault();
+            moveFocus(-1);
+            return;
+          }
+          if (e.key === "Enter") {
+            var items = getFocusableItems(resultsEl);
+            if (focusedIndex >= 0 && items[focusedIndex]) {
+              items[focusedIndex].click();
+            }
+            return;
+          }
+        });
+
+        /* Live search on input */
+        inputEl.addEventListener("input", function () {
+          clearTimeout(debounceTimer);
+          var q = inputEl.value;
+          debounceTimer = setTimeout(function () {
+            focusedIndex = -1;
+            renderResults(q, resultsEl, searchIndex);
+          }, 120);
+        });
+
+        /* Prevent search input from clearing when pressing ↑↓ */
+        inputEl.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowDown" || e.key === "ArrowUp") e.preventDefault();
+        });
+      })();
     </script>
   </body>
 </html>
