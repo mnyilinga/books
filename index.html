@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -992,6 +991,203 @@
           max-width: 280px;
         }
       }
+      /* ══════════════════════════════════
+         RECOMMENDED STORIES CAROUSEL
+         Horizontal scroll — BBC style
+         ══════════════════════════════════ */
+      .rec-stories {
+        padding: 0 0 48px;
+        border-top: 3px solid var(--color-black);
+      }
+      .rec-stories .container {
+        padding-top: 0;
+      }
+      .rec-stories-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0 16px;
+      }
+      .rec-stories-title {
+        font-size: 0.88rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--color-black);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .rec-stories-title svg {
+        width: 16px;
+        height: 16px;
+        fill: var(--color-black);
+        flex-shrink: 0;
+      }
+
+      /* Wrapper inayoficha scrollbar lakini inaruhusu scroll */
+      .rec-track-wrap {
+        overflow: hidden;
+        position: relative;
+      }
+      /* Arrow buttons – desktop */
+      .rec-arrow {
+        display: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        background: var(--color-white);
+        border: 1px solid var(--color-gray-300);
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--shadow-md);
+        transition: var(--transition);
+      }
+      .rec-arrow:hover {
+        background: var(--color-black);
+        border-color: var(--color-black);
+      }
+      .rec-arrow:hover svg { fill: var(--color-white); }
+      .rec-arrow svg {
+        width: 18px;
+        height: 18px;
+        fill: var(--color-black);
+        display: block;
+        transition: fill 0.2s;
+      }
+      .rec-arrow-left  { left: -8px; }
+      .rec-arrow-right { right: -8px; }
+      @media (min-width: 769px) {
+        .rec-arrow { display: flex; }
+      }
+
+      /* The scrollable track */
+      .rec-track {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;        /* Firefox */
+        padding-bottom: 4px;
+        cursor: grab;
+        user-select: none;
+      }
+      .rec-track:active { cursor: grabbing; }
+      .rec-track::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+      /* Individual story card */
+      .rec-card {
+        flex: 0 0 220px;
+        scroll-snap-align: start;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      @media (max-width: 540px) {
+        .rec-card { flex: 0 0 180px; }
+      }
+
+      .rec-card-img-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4/3;
+        border-radius: 4px;
+        overflow: hidden;
+        background: var(--color-gray-100);
+        flex-shrink: 0;
+      }
+      .rec-card-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+      }
+      .rec-card:hover .rec-card-img-wrap img {
+        transform: scale(1.04);
+      }
+
+      .rec-card-body {
+        padding: 10px 0 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .rec-card-category {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--color-orange);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+      .rec-card-title {
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--color-black);
+        line-height: 1.35;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        flex: 1;
+      }
+      .rec-card-title:hover { color: var(--color-orange); }
+
+      .rec-card-footer {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid var(--color-gray-100);
+      }
+      .rec-save-btn {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        background: none;
+        border: 1px solid var(--color-gray-300);
+        border-radius: 20px;
+        padding: 4px 10px 4px 7px;
+        font-size: 0.75rem;
+        font-weight: 500;
+        cursor: pointer;
+        font-family: "Inter", sans-serif;
+        color: var(--color-gray-600);
+        transition: var(--transition);
+        flex-shrink: 0;
+      }
+      .rec-save-btn svg {
+        width: 14px;
+        height: 14px;
+        fill: none;
+        stroke: var(--color-gray-600);
+        stroke-width: 1.8;
+        transition: var(--transition);
+        flex-shrink: 0;
+      }
+      .rec-save-btn:hover,
+      .rec-save-btn.saved {
+        border-color: var(--color-orange);
+        color: var(--color-orange);
+      }
+      .rec-save-btn:hover svg,
+      .rec-save-btn.saved svg {
+        stroke: var(--color-orange);
+        fill: var(--color-orange);
+      }
+      .rec-read-time {
+        font-size: 0.73rem;
+        color: var(--color-gray-600);
+        white-space: nowrap;
+      }
     </style>
   </head>
   <body>
@@ -1340,6 +1536,218 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════
+         RECOMMENDED STORIES CAROUSEL
+         Horizontal scroll — BBC style
+         10 kadi za makala yanayopendekezwa
+         ═══════════════════════════════════════════════ -->
+    <section class="rec-stories">
+      <div class="container">
+
+        <div class="rec-stories-header">
+          <span class="rec-stories-title">
+            Recommended Stories
+            <svg viewBox="0 0 24 24"><path d="M8 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+
+        <!-- Track wrapper + arrows -->
+        <div class="rec-track-wrap" style="position:relative">
+          <button class="rec-arrow rec-arrow-left" aria-label="Scroll left">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="rec-arrow rec-arrow-right" aria-label="Scroll right">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+
+          <div class="rec-track" id="recTrack">
+
+            <!-- Card 1 -->
+            <article class="rec-card">
+              <a href="#" class="rec-card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=440&q=80" alt="Books and reading" loading="lazy"/>
+              </a>
+              <div class="rec-card-body">
+                <span class="rec-card-category">Books</span>
+                <a href="#" class="rec-card-title">The 10 most influential books every entrepreneur should read this year</a>
+                <div class="rec-card-footer">
+                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
+                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                    Save
+                  </button>
+                  <span class="rec-read-time">8 mins</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="rec-card">
+              <a href="#" class="rec-card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=440&q=80" alt="Business mindset" loading="lazy"/>
+              </a>
+              <div class="rec-card-body">
+                <span class="rec-card-category">Business</span>
+                <a href="#" class="rec-card-title">How reading daily for 30 minutes transformed this CEO's decision-making</a>
+                <div class="rec-card-footer">
+                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
+                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                    Save
+                  </button>
+                  <span class="rec-read-time">12 mins</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="rec-card">
+              <a href="#" class="rec-card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=440&q=80" alt="Writing desk" loading="lazy"/>
+              </a>
+              <div class="rec-card-body">
+                <span class="rec-card-category">Self-Dev</span>
+                <a href="#" class="rec-card-title">Why fiction readers develop stronger empathy and social intelligence</a>
+                <div class="rec-card-footer">
+                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
+                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                    Save
+                  </button>
+                  <span class="rec-read-time">6 mins</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="rec-card">
+              <a href="#" class="rec-card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=440&q=80" alt="Stack of books" loading="lazy"/>
+              </a>
+              <div class="rec-card-body">
+                <span class="rec-card-category">Productivity</span>
+                <a href="#" class="rec-card-title">The science of speed-reading: myths, facts, and what actually works</a>
+                <div class="rec-card-footer">
+                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
+                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                    Save
+                  </button>
+                  <span class="rec-read-time">9 mins</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="rec-card">
+              <a href="#" class="rec-card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=440&q=80" alt="Library" loading="lazy"/>
+              </a>
+              <div class="rec-card-body">
+                <span class="rec-card-category">Culture</span>
+                <a href="#" class="rec-card-title">Inside Tanzania's growing literary scene: local authors changing the narrative</a>
+                <div class="rec-card-footer">
+                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
+                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                    Save
+                  </button>
+                  <span class="rec-read-time">14 mins</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 6 -->
+            <article class="rec-card">
+              <a href="#" class="rec-card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=440&q=80" alt="Open book" loading="lazy"/>
+              </a>
+              <div class="rec-card-body">
+                <span class="rec-card-category">Technology</span>
+                <a href="#" class="rec-card-title">From page to pixel: how e-books are reshaping reading habits across Africa</a>
+                <div class="rec-card-footer">
+                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
+                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                    Save
+                  </button>
+                  <span class="rec-read-time">11 mins</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 7 -->
+            <article class="rec-card">
+              <a href="#" class="rec-card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=440&q=80" alt="Bookshelf" loading="lazy"/>
+              </a>
+              <div class="rec-card-body">
+                <span class="rec-card-category">Wellness</span>
+                <a href="#" class="rec-card-title">Bibliotherapy: how the right book at the right time can improve mental health</a>
+                <div class="rec-card-footer">
+                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
+                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                    Save
+                  </button>
+                  <span class="rec-read-time">7 mins</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 8 -->
+            <article class="rec-card">
+              <a href="#" class="rec-card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=440&q=80" alt="Night reading" loading="lazy"/>
+              </a>
+              <div class="rec-card-body">
+                <span class="rec-card-category">Lifestyle</span>
+                <a href="#" class="rec-card-title">Night owl or early bird? When is the best time to read for deep retention</a>
+                <div class="rec-card-footer">
+                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
+                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                    Save
+                  </button>
+                  <span class="rec-read-time">5 mins</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 9 -->
+            <article class="rec-card">
+              <a href="#" class="rec-card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1610484826967-09c5720778c7?auto=format&fit=crop&w=440&q=80" alt="Children books" loading="lazy"/>
+              </a>
+              <div class="rec-card-body">
+                <span class="rec-card-category">Parenting</span>
+                <a href="#" class="rec-card-title">Raising readers: the proven strategies that instil a lifelong love of books in children</a>
+                <div class="rec-card-footer">
+                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
+                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                    Save
+                  </button>
+                  <span class="rec-read-time">10 mins</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Card 10 -->
+            <article class="rec-card">
+              <a href="#" class="rec-card-img-wrap">
+                <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=440&q=80" alt="Reading coffee" loading="lazy"/>
+              </a>
+              <div class="rec-card-body">
+                <span class="rec-card-category">Finance</span>
+                <a href="#" class="rec-card-title">The 5 money books that Tanzanian investors swear by for building lasting wealth</a>
+                <div class="rec-card-footer">
+                  <button class="rec-save-btn" onclick="toggleSave(this)" aria-label="Save story">
+                    <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
+                    Save
+                  </button>
+                  <span class="rec-read-time">13 mins</span>
+                </div>
+              </div>
+            </article>
+
+          </div><!-- /rec-track -->
+        </div><!-- /rec-track-wrap -->
+
+      </div><!-- /container -->
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
          JARIDA LA HABARI (Newsletter)
          Fomu ya kuandikisha barua pepe
          ═══════════════════════════════════════════════ -->
@@ -1535,7 +1943,55 @@
         if (yearSpan) yearSpan.textContent = new Date().getFullYear();
       });
 
-      /* ── KICHUJIO CHA VITABU (Book Filter) ──
+      /* ── RECOMMENDED STORIES CAROUSEL ── */
+      (function () {
+        const track = document.getElementById("recTrack");
+        if (!track) return;
+
+        /* Arrow scroll */
+        const SCROLL_AMT = 460;
+        document.querySelector(".rec-arrow-left").addEventListener("click", () => {
+          track.scrollBy({ left: -SCROLL_AMT, behavior: "smooth" });
+        });
+        document.querySelector(".rec-arrow-right").addEventListener("click", () => {
+          track.scrollBy({ left: SCROLL_AMT, behavior: "smooth" });
+        });
+
+        /* Mouse drag scroll */
+        let isDragging = false, startX, scrollLeft;
+        track.addEventListener("mousedown", (e) => {
+          isDragging = true;
+          startX = e.pageX - track.offsetLeft;
+          scrollLeft = track.scrollLeft;
+          track.style.scrollSnapType = "none";
+        });
+        track.addEventListener("mouseleave", () => { isDragging = false; });
+        track.addEventListener("mouseup", () => {
+          isDragging = false;
+          track.style.scrollSnapType = "x mandatory";
+        });
+        track.addEventListener("mousemove", (e) => {
+          if (!isDragging) return;
+          e.preventDefault();
+          const x = e.pageX - track.offsetLeft;
+          track.scrollLeft = scrollLeft - (x - startX) * 1.4;
+        });
+      })();
+
+      /* ── SAVE BUTTON TOGGLE ── */
+      function toggleSave(btn) {
+        btn.classList.toggle("saved");
+        const isSaved = btn.classList.contains("saved");
+        btn.querySelector("text, span") || (btn.childNodes[btn.childNodes.length - 1].textContent = isSaved ? " Saved" : " Save");
+        /* Update text node */
+        for (let node of btn.childNodes) {
+          if (node.nodeType === 3 && node.textContent.trim()) {
+            node.textContent = isSaved ? " Saved" : " Save";
+            break;
+          }
+        }
+      }
+
          Inachuja vitabu kulingana na aina iliyochaguliwa
          cat = aina ya kitabu (productivity, self-dev, business, all) */
       function filterBooks(btn, cat) {
