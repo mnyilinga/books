@@ -1446,22 +1446,40 @@
       .search-esc-btn {
         display: flex;
         align-items: center;
-        gap: 4px;
-        font-size: 0.72rem;
-        color: var(--color-gray-600);
-        background: var(--color-gray-50);
-        border: 1px solid var(--color-gray-300);
-        border-radius: 5px;
-        padding: 3px 8px;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        background: transparent;
+        border: none;
+        border-radius: 8px;
         cursor: pointer;
-        font-family: "Inter", sans-serif;
-        transition: var(--transition);
-        white-space: nowrap;
         flex-shrink: 0;
+        transition: background 0.2s;
+        color: var(--color-gray-600);
+      }
+      .search-esc-btn svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+        stroke-width: 2.2;
+        stroke-linecap: round;
+        fill: none;
+        transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), stroke 0.2s;
       }
       .search-esc-btn:hover {
-        border-color: var(--color-gray-600);
+        background: var(--color-gray-100);
         color: var(--color-black);
+      }
+      .search-esc-btn:hover svg {
+        transform: rotate(90deg) scale(1.15);
+      }
+      /* Animate in when overlay opens */
+      .search-overlay.open .search-esc-btn svg {
+        animation: xSpin 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+      @keyframes xSpin {
+        from { transform: rotate(-90deg) scale(0.5); opacity: 0; }
+        to   { transform: rotate(0deg)   scale(1);   opacity: 1; }
       }
 
       /* Results list */
@@ -1782,7 +1800,10 @@
             id="searchClose"
             aria-label="Close search"
           >
-            esc
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
           </button>
         </div>
         <div class="search-results" id="searchResults" role="listbox"></div>
