@@ -214,7 +214,8 @@
         align-items: center;
       }
       /* Picha ya logo - ukubwa unatoka kwenye variable */
-      .logo img {
+      .logo img,
+      .navbar-logo-img {
         height: var(--logo-height);
         width: auto;
         display: block;
@@ -753,9 +754,6 @@
          na viungo vya nav vinafichwa chini
          ─────────────────────────────────────────── */
       @media (max-width: 768px) {
-        :root {
-          --logo-height: 48px; /* Ongeza logo ya navbar kwenye mobile */
-        }
         h1 {
           font-size: 2rem;
         }
@@ -1360,6 +1358,15 @@
         .nav-actions {
           gap: 2px;
         }
+
+        /* Logo kubwa kwenye mobile + inachukua nafasi ili icons ziende mbali */
+        .logo {
+          flex: 1;
+        }
+        .navbar-logo-img {
+          height: 50px !important;
+          width: auto;
+        }
       }
 
       /* ══════════════════════════════════
@@ -1726,7 +1733,7 @@
           <img
             src="https://books.mnyilinga.co.tz/assets/images/main-logo-01.svg"
             alt="Mnyilinga Books"
-            style="height: var(--logo-height); width: auto; display: block"
+            class="navbar-logo-img"
           />
         </a>
 
