@@ -7,28 +7,59 @@
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
+      /* ══════════════════════════════════════════
+         VIGEZO VYA MSINGI (CSS Variables)
+         Badilisha hapa ili kuathiri website nzima
+         ══════════════════════════════════════════ */
       :root {
+        /* Rangi kuu za website */
         --color-black: #000000;
         --color-white: #ffffff;
-        --color-orange: #ff6a00;
-        --color-orange-hover: #e55e00;
-        --color-gray-50: #fafafa;
-        --color-gray-100: #f5f5f5;
-        --color-gray-300: #e0e0e0;
-        --color-gray-600: #666666;
-        --color-gray-900: #1a1a1a;
+        --color-orange: #ff6a00;        /* Rangi ya machungwa - vitufe na highlights */
+        --color-orange-hover: #e55e00;  /* Machungwa giza - hover state */
+
+        /* Vivuli vya kijivu */
+        --color-gray-50: #fafafa;   /* Nyeupe laini - background ya sections */
+        --color-gray-100: #f5f5f5;  /* Kijivu laini - mipaka */
+        --color-gray-300: #e0e0e0;  /* Kijivu - borders */
+        --color-gray-600: #666666;  /* Kijivu - maandishi madogo */
+        --color-gray-900: #1a1a1a;  /* Karibu nyeusi */
+
+        /* Vivuli vya sanduku */
         --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
         --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+        /* Muda wa animation */
         --transition: all 0.3s ease;
+
+        /* Upana wa juu wa ukurasa */
         --container-width: 1200px;
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           UKUBWA WA LOGO - Badilisha hapa tu!
+           Ongeza nambari = logo kubwa
+           Punguza nambari = logo ndogo
+           Mfano: 36px (ndogo) | 44px (kati) | 60px (kubwa)
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        --logo-height: 44px;          /* Ukubwa wa logo kwenye navbar */
+        --logo-height-footer: 44px;   /* Ukubwa wa logo kwenye footer */
       }
 
+      /* ══════════════════════════════════
+         MIPANGILIO YA MSINGI (Reset)
+         Inaondoa margin/padding zote
+         na inaweka box-sizing sahihi
+         ══════════════════════════════════ */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
+      /* ══════════════════════════════════
+         MWILI WA UKURASA (Body)
+         Font, rangi ya maandishi, na background
+         ══════════════════════════════════ */
       body {
         font-family: "Inter", sans-serif;
         color: var(--color-black);
@@ -51,12 +82,23 @@
         display: block;
       }
 
+      /* ══════════════════════════════════
+         KONTENA (Container)
+         Inazuia ukurasa usipanuke sana
+         na inaweka maudhui katikati
+         ══════════════════════════════════ */
       .container {
         max-width: var(--container-width);
         margin: 0 auto;
         padding: 0 20px;
       }
 
+      /* ══════════════════════════════════
+         VICHWA VYA HABARI (Headings)
+         h1 = kichwa kikubwa (hero)
+         h2 = kichwa cha sehemu
+         h3 = kichwa kidogo (kadi za vitabu)
+         ══════════════════════════════════ */
       h1,
       h2,
       h3 {
@@ -131,26 +173,48 @@
         background: var(--color-white);
       }
 
-      /* ── NAVBAR ── */
+      /* ══════════════════════════════════
+         MENYU YA JUU (Navbar)
+         Inabaki juu ukurasa ukiscroll (sticky)
+         ══════════════════════════════════ */
       .navbar {
         position: sticky;
         top: 0;
         background: var(--color-white);
         border-bottom: 1px solid var(--color-gray-100);
         z-index: 1000;
+        /* overflow:visible inahakikisha menyu ya simu
+           inaonekana vizuri chini ya navbar */
+        overflow: visible;
       }
+      /* Ndani ya navbar - inapanga logo, hamburger, na viungo */
       .navbar .container {
         display: flex;
         justify-content: space-between;
         align-items: center;
         height: 72px;
+        position: relative; /* MUHIMU: inaruhusu menyu ya simu kutoka hapa chini */
       }
+      /* ══════════════════════════════════
+         LOGO (picha ya nembo)
+         Ukubwa wake unadhibitiwa na
+         --logo-height kwenye :root hapo juu
+         ══════════════════════════════════ */
       .logo {
         font-size: 1.2rem;
         font-weight: 700;
         letter-spacing: -0.02em;
         color: var(--color-black);
+        display: flex;
+        align-items: center;
       }
+      /* Picha ya logo - ukubwa unatoka kwenye variable */
+      .logo img {
+        height: var(--logo-height);
+        width: auto;
+        display: block;
+      }
+      /* Viungo vya menyu - vionekane upande (desktop) */
       .nav-links {
         display: flex;
         gap: 32px;
@@ -164,6 +228,8 @@
       .nav-links a.active {
         color: var(--color-orange);
       }
+      /* Kitufe cha menyu (hamburger icon) - inaonekana simu tu
+         display:none = imefichwa kwenye desktop */
       .menu-toggle {
         display: none;
         background: none;
@@ -178,6 +244,11 @@
         display: block;
       }
 
+      /* ══════════════════════════════════
+         SEHEMU YA KWANZA (Hero)
+         Maneno makubwa ya kukaribisha
+         wageni wanaoingia kwenye website
+         ══════════════════════════════════ */
       /* ── HERO ── */
       .hero {
         padding: 100px 0;
@@ -195,6 +266,11 @@
         justify-content: center;
       }
 
+      /* ══════════════════════════════════
+         SEHEMU ZA UKURASA (Sections)
+         Kila sehemu ina padding juu na chini
+         section-bg = background ya kijivu
+         ══════════════════════════════════ */
       /* ── SECTIONS ── */
       .section {
         padding: 72px 0;
@@ -203,6 +279,12 @@
         background: var(--color-gray-50);
       }
 
+      /* ══════════════════════════════════
+         GRIDI YA VITABU VILIVYOANGAZIWA
+         grid-4 = safu 4 kwa desktop
+         Kadi za vitabu zinaweza kubonyezwa
+         na zinaonyesha picha, jina, bei
+         ══════════════════════════════════ */
       /* ── GRID CARDS ── */
       .grid {
         display: grid;
@@ -264,6 +346,13 @@
         color: var(--color-black);
       }
 
+      /* ══════════════════════════════════
+         ORODHA YA VITABU BORA (Bestsellers)
+         Muundo wa Amazon - picha upande wa
+         kushoto, maelezo upande wa kulia
+         Vichujio (filter buttons) vinaweza
+         kuchuja vitabu kwa aina
+         ══════════════════════════════════ */
       /* ── BESTSELLERS LIST ── */
       .section-header {
         display: flex;
@@ -475,6 +564,11 @@
         flex-wrap: wrap;
       }
 
+      /* ══════════════════════════════════
+         CHINI YA UKURASA (Footer)
+         Sehemu ya mwisho - background nyeusi
+         Ina logo, viungo, na mitandao ya kijamii
+         ══════════════════════════════════ */
       /* ── FOOTER ── */
       .footer {
         background: var(--color-black);
@@ -504,6 +598,11 @@
         margin-bottom: 10px;
       }
 
+      /* ══════════════════════════════════
+         AIKONI ZA MITANDAO YA KIJAMII
+         Kila ikoni ina rangi yake --si-color
+         Inabadilika rangi ukigusa (hover)
+         ══════════════════════════════════ */
       /* Social Icons */
       .social-links {
         display: flex;
@@ -547,9 +646,19 @@
         color: #555;
       }
 
-      /* ══════════════════════════════════
-           RESPONSIVE
-        ══════════════════════════════════ */
+      /* ══════════════════════════════════════════════════
+         MUUNDO WA SKRINI TOFAUTI (Responsive Design)
+
+         Skrini kubwa (desktop):   zaidi ya 992px
+         Kompyuta ndogo (tablet):  chini ya 992px
+         Simu (tablet ndogo):      chini ya 768px
+         Simu ndogo:               chini ya 540px
+
+         Kila ukubwa unabadilisha mpangilio ili
+         website ionekane vizuri kwenye kila kifaa
+         ══════════════════════════════════════════════════ */
+
+      /* ─── TABLET (992px na chini) ─── */
       @media (max-width: 992px) {
         .grid-4 {
           grid-template-columns: repeat(2, 1fr);
@@ -563,6 +672,10 @@
         }
       }
 
+      /* ─── SIMU / TABLET NDOGO (768px na chini) ───
+         Hapa menyu ya hamburger inaonekana
+         na viungo vya nav vinafichwa chini
+         ─────────────────────────────────────────── */
       @media (max-width: 768px) {
         h1 {
           font-size: 2rem;
@@ -577,12 +690,13 @@
           padding: 64px 0;
         }
 
+        /* Menyu ya simu - inashuka chini ya navbar ukibonyeza hamburger */
         .menu-toggle {
-          display: block;
+          display: block; /* Inaonekana kwenye simu */
         }
         .nav-links {
-          position: absolute;
-          top: 72px;
+          position: fixed;      /* Fixed = inashikilia mahali hata ukiscroll */
+          top: 72px;            /* Umbali kutoka juu = urefu wa navbar */
           left: 0;
           right: 0;
           background: var(--color-white);
@@ -591,6 +705,7 @@
           gap: 20px;
           border-bottom: 1px solid var(--color-gray-100);
           box-shadow: var(--shadow-sm);
+          /* Imefichwa - itatoka ukibonyeza hamburger */
           transform: translateY(-110%);
           opacity: 0;
           transition:
@@ -599,7 +714,7 @@
           z-index: 999;
         }
         .nav-links.active {
-          transform: translateY(0);
+          transform: translateY(0); /* Inaonekana */
           opacity: 1;
         }
 
@@ -628,6 +743,10 @@
         }
       }
 
+      /* ─── SIMU NDOGO SANA (540px na chini) ───
+         Gridi inabadilika kuwa safu 2
+         Kadi za orodha zinafuata muundo wa Amazon
+         ──────────────────────────────────────── */
       @media (max-width: 540px) {
         /* Grid cards → 2 columns */
         .grid-4 {
@@ -761,11 +880,15 @@
     </style>
   </head>
   <body>
-    <!-- ═══ NAVBAR ═══ -->
+    <!-- ═══════════════════════════════════════════════
+         MENYU YA JUU (Navbar)
+         Ina: logo (kushoto), hamburger icon (simu), viungo (kulia)
+         Inabaki juu ukurasa ukiscroll
+         ═══════════════════════════════════════════════ -->
     <nav class="navbar">
       <div class="container">
         <a href="#" class="logo">
-          <img src="https://books.mnyilinga.co.tz/assets/images/main-logo-01.svg" alt="Mnyilinga Books" style="height: 44px; width: auto; display: block;" />
+          <img src="https://books.mnyilinga.co.tz/assets/images/main-logo-01.svg" alt="Mnyilinga Books" style="height: var(--logo-height); width: auto; display: block;" />
         </a>
         <button class="menu-toggle" aria-label="Toggle menu">
           <svg viewBox="0 0 24 24">
@@ -781,7 +904,10 @@
       </div>
     </nav>
 
-    <!-- ═══ HERO ═══ -->
+    <!-- ═══════════════════════════════════════════════
+         SEHEMU YA KWANZA (Hero)
+         Maneno makubwa ya kukaribisha na vitufe viwili
+         ═══════════════════════════════════════════════ -->
     <header class="hero">
       <div class="container">
         <h1>Curated reads for the modern mind.</h1>
@@ -796,7 +922,11 @@
       </div>
     </header>
 
-    <!-- ═══ FEATURED BOOKS (grid) ═══ -->
+    <!-- ═══════════════════════════════════════════════
+         VITABU VILIVYOANGAZIWA (Featured Books)
+         Gridi ya kadi 4 - inaonyesha vitabu 4 bora
+         Kila kadi ina: picha, aina, jina, mwandishi, bei
+         ═══════════════════════════════════════════════ -->
     <section class="section">
       <div class="container">
         <h2 style="margin-bottom: 24px">Featured Books</h2>
@@ -872,7 +1002,11 @@
       </div>
     </section>
 
-    <!-- ═══ BEST SELLERS (list view) ═══ -->
+    <!-- ═══════════════════════════════════════════════
+         VITABU BORA WIKI HII (Best Sellers)
+         Orodha ya vitabu na vichujio (All/Productivity/Self-Dev/Business)
+         Kila kadi ina: picha, maelezo, bei, vitufe vya kununua
+         ═══════════════════════════════════════════════ -->
     <section class="section section-bg">
       <div class="container">
         <div class="section-header">
@@ -1086,7 +1220,10 @@
       </div>
     </section>
 
-    <!-- ═══ NEWSLETTER ═══ -->
+    <!-- ═══════════════════════════════════════════════
+         JARIDA LA HABARI (Newsletter)
+         Fomu ya kuandikisha barua pepe
+         ═══════════════════════════════════════════════ -->
     <section class="section">
       <div class="container" style="text-align: center; max-width: 580px">
         <h2>Join our newsletter</h2>
@@ -1112,13 +1249,20 @@
       </div>
     </section>
 
-    <!-- ═══ FOOTER ═══ -->
+    <!-- ═══════════════════════════════════════════════
+         CHINI YA UKURASA (Footer)
+         Sehemu ya mwisho - ina:
+         - Logo na maelezo mafupi (kushoto)
+         - Viungo vya haraka (katikati)
+         - Mitandao ya kijamii (kulia)
+         - Haki ya kunakili chini kabisa
+         ═══════════════════════════════════════════════ -->
     <footer class="footer">
       <div class="container">
         <div class="footer-grid">
           <div>
             <div style="margin-bottom: 14px;">
-              <img src="https://books.mnyilinga.co.tz/assets/images/main-logo-01.svg" alt="Mnyilinga Books" style="height: 44px; width: auto; filter: brightness(0) invert(1);" />
+              <img src="https://books.mnyilinga.co.tz/assets/images/main-logo-01.svg" alt="Mnyilinga Books" style="height: var(--logo-height-footer); width: auto; filter: brightness(0) invert(1);" />
             </div>
             <p style="max-width: 280px; line-height: 1.7">
               A premium destination for readers who appreciate modern design and
@@ -1206,21 +1350,32 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
+        /* ── HAMBURGER MENU (Menyu ya Simu) ──
+           Inashughulikia kufungua na kufunga menyu
+           kwenye simu au tablet ndogo             */
         const menuToggle = document.querySelector(".menu-toggle");
         const navLinks = document.querySelector(".nav-links");
+
+        /* Njia ya ikoni ya hamburger (mistari mitatu) */
         const pathHamburger = "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z";
+        /* Njia ya ikoni ya X (kufunga) */
         const pathClose =
           "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z";
 
         if (menuToggle && navLinks) {
-          menuToggle.addEventListener("click", () => {
+          /* Ukibonyeza kitufe cha hamburger:
+             - Ongeza/ondoa class "active" kwenye menyu
+             - Badilisha ikoni kati ya hamburger na X */
+          menuToggle.addEventListener("click", (e) => {
+            e.stopPropagation(); /* Zuia click isiendelee nje */
             navLinks.classList.toggle("active");
             const open = navLinks.classList.contains("active");
             menuToggle
               .querySelector("path")
               .setAttribute("d", open ? pathClose : pathHamburger);
           });
-          // Close on outside click
+
+          /* Funga menyu ukibonyeza nje yake */
           document.addEventListener("click", (e) => {
             if (
               !menuToggle.contains(e.target) &&
@@ -1230,17 +1385,33 @@
               menuToggle.querySelector("path").setAttribute("d", pathHamburger);
             }
           });
+
+          /* Funga menyu ukibonyeza kiungo chochote ndani yake */
+          navLinks.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+              navLinks.classList.remove("active");
+              menuToggle.querySelector("path").setAttribute("d", pathHamburger);
+            });
+          });
         }
 
+        /* ── MWAKA WA SASA (Current Year) ──
+           Inaweka mwaka wa sasa kwenye footer */
         const yearSpan = document.getElementById("current-year");
         if (yearSpan) yearSpan.textContent = new Date().getFullYear();
       });
 
+      /* ── KICHUJIO CHA VITABU (Book Filter) ──
+         Inachuja vitabu kulingana na aina iliyochaguliwa
+         cat = aina ya kitabu (productivity, self-dev, business, all) */
       function filterBooks(btn, cat) {
+        /* Ondoa "active" kutoka vitufe vyote */
         document
           .querySelectorAll(".filter-btn")
           .forEach((b) => b.classList.remove("active"));
+        /* Weka "active" kwenye kitufe kilichobonyezwa */
         btn.classList.add("active");
+        /* Onyesha/ficha kadi za vitabu kulingana na aina */
         document.querySelectorAll(".list-card").forEach((card) => {
           card.style.display =
             cat === "all" || card.dataset.category === cat ? "flex" : "none";
