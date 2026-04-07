@@ -260,19 +260,74 @@
          ══════════════════════════════════ */
       /* ── HERO ── */
       .hero {
-        padding: 100px 0;
-        background: var(--color-gray-50);
+        position: relative;
+        padding: 140px 0 120px;
         text-align: center;
+        overflow: hidden;
+        background-color: #0a0a0a;
+      }
+
+      /* Picha ya nyuma (background image) */
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background-image: url('https://books.mnyilinga.co.tz/assets/images/hero.webp');
+        background-size: cover;
+        background-position: center top;
+        background-repeat: no-repeat;
+        /* Punguza opacity ya picha ili maandishi yasomeke */
+        opacity: 0.38;
+        z-index: 0;
+      }
+
+      /* Gradient overlay - kutoka juu nyeusi laini hadi chini nyeusi kabisa */
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.35) 0%,
+          rgba(0, 0, 0, 0.20) 40%,
+          rgba(0, 0, 0, 0.55) 75%,
+          rgba(0, 0, 0, 0.88) 100%
+        );
+        z-index: 1;
+      }
+
+      /* Maudhui ya hero yanabaki juu ya overlay */
+      .hero .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Maandishi ya hero - nyeupe ili yasonike vizuri */
+      .hero h1 {
+        color: #ffffff;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.5);
       }
       .hero p {
         font-size: 1.1rem;
         max-width: 580px;
         margin: 0 auto 32px;
+        color: rgba(255, 255, 255, 0.82);
+        text-shadow: 0 1px 8px rgba(0,0,0,0.4);
       }
       .hero-btns {
         display: flex;
         gap: 12px;
         justify-content: center;
+      }
+      /* Kitufe cha outline kwa hero - nyeupe */
+      .hero .btn-outline {
+        color: #ffffff;
+        border-color: rgba(255,255,255,0.55);
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(4px);
+      }
+      .hero .btn-outline:hover {
+        border-color: #ffffff;
+        background: rgba(255,255,255,0.18);
       }
 
       /* ══════════════════════════════════
@@ -918,6 +973,8 @@
          Maneno makubwa ya kukaribisha na vitufe viwili
          ═══════════════════════════════════════════════ -->
     <header class="hero">
+      <!-- Picha ya nyuma - imewekwa kama div tofauti ili opacity isathiri maandishi -->
+      <div class="hero-bg" aria-hidden="true"></div>
       <div class="container">
         <h1>Curated reads for the modern mind.</h1>
         <p>
