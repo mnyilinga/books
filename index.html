@@ -1188,6 +1188,65 @@
         color: var(--color-gray-600);
         white-space: nowrap;
       }
+      /* ══════════════════════════════════
+         QUICK LINKS CAROUSEL
+         ══════════════════════════════════ */
+      .quick-links-section {
+        padding: 14px 0 16px;
+        border-bottom: 1px solid var(--color-gray-100);
+        background: var(--color-white);
+      }
+      .quick-links-inner {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .quick-links-label {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--color-black);
+        white-space: nowrap;
+        flex-shrink: 0;
+        letter-spacing: 0.01em;
+      }
+      .quick-links-track {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        cursor: grab;
+        padding: 4px 2px;
+        flex: 1;
+      }
+      .quick-links-track:active { cursor: grabbing; }
+      .quick-links-track::-webkit-scrollbar { display: none; }
+      .ql-btn {
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 16px;
+        border-radius: 8px;
+        background: var(--color-gray-50);
+        border: 1px solid var(--color-gray-300);
+        font-family: "Inter", sans-serif;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--color-black);
+        cursor: pointer;
+        white-space: nowrap;
+        transition: var(--transition);
+        text-decoration: none;
+      }
+      .ql-btn:hover {
+        background: var(--color-orange);
+        border-color: var(--color-orange);
+        color: var(--color-white);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(255,106,0,0.25);
+      }
     </style>
   </head>
   <body>
@@ -1748,6 +1807,36 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════
+         QUICK LINKS CAROUSEL
+         ═══════════════════════════════════════════════ -->
+    <div class="quick-links-section">
+      <div class="container">
+        <div class="quick-links-inner">
+          <span class="quick-links-label">Quick Links</span>
+          <div class="quick-links-track" id="qlTrack">
+
+            <a href="#" class="ql-btn">Jinsi ya kumridhisha mke wako</a>
+            <a href="#" class="ql-btn">Vitabu vipya 2025</a>
+            <a href="#" class="ql-btn">Usimamizi wa fedha</a>
+            <a href="#" class="ql-btn">Jinsi ya kujiamini</a>
+            <a href="#" class="ql-btn">Vitabu vya watoto</a>
+            <a href="#" class="ql-btn">Biashara ndogo Tanzania</a>
+            <a href="#" class="ql-btn">Mapenzi na mahusiano</a>
+            <a href="#" class="ql-btn">Afya ya akili</a>
+            <a href="#" class="ql-btn">Ujasiriamali wa vijana</a>
+            <a href="#" class="ql-btn">Vitabu vya dini</a>
+            <a href="#" class="ql-btn">Jinsi ya kulea watoto</a>
+            <a href="#" class="ql-btn">Mafanikio na ndoto</a>
+            <a href="#" class="ql-btn">Vitabu vya historia</a>
+            <a href="#" class="ql-btn">Kupikia na lishe bora</a>
+            <a href="#" class="ql-btn">Teknolojia na AI</a>
+
+          </div><!-- /ql-track -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
          JARIDA LA HABARI (Newsletter)
          Fomu ya kuandikisha barua pepe
          ═══════════════════════════════════════════════ -->
@@ -1992,6 +2081,18 @@
         }
       }
 
+      /* ── QUICK LINKS DRAG SCROLL ── */
+      (function () {
+        const ql = document.getElementById("qlTrack");
+        if (!ql) return;
+        let down = false, sx, sl;
+        ql.addEventListener("mousedown", e => { down=true; sx=e.pageX-ql.offsetLeft; sl=ql.scrollLeft; ql.style.scrollSnapType="none"; });
+        ql.addEventListener("mouseleave", () => down=false);
+        ql.addEventListener("mouseup", () => { down=false; ql.style.scrollSnapType="x mandatory"; });
+        ql.addEventListener("mousemove", e => { if(!down) return; e.preventDefault(); ql.scrollLeft = sl-(e.pageX-ql.offsetLeft-sx)*1.4; });
+      })();
+
+      /* ── KICHUJIO CHA VITABU (Book Filter) ──
          Inachuja vitabu kulingana na aina iliyochaguliwa
          cat = aina ya kitabu (productivity, self-dev, business, all) */
       function filterBooks(btn, cat) {
